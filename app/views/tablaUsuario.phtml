@@ -1,0 +1,68 @@
+<section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Lista de usuarios creados</h3>
+        </div>
+        <div class="card-body">
+            <div id='div_tabla_usuarios' class='table-responsive'>
+                <table id="tabla_usuarios" class="table  table-bordered table-hover">
+                <thead>
+                <tr role="row">
+                    <th  style="width: 22.5%">Usuario</th>
+                    <th style="width: 22.5%">Contraseña</th>
+                    <th style="width: 22.5%">Correo</th>
+                    <th style="width: 22.5%">Tipo de Usuario</th>
+                    <th style="width: 10%">Aciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $usuarios = isset($datos) ? $datos : array();
+
+                foreach ($usuarios as $key => $usuario) {
+                    echo "
+                    <tr>
+                        <td>".$usuario['usuario']."</td>
+                        <td>".$usuario['contrasenia']."</td>
+                        <td>".$usuario['correo']."</td>
+                        <td>".$usuario['tipo']."</td>
+                        <td style='display: flex; justify-content: center; align-content: space-between'>
+                            <button style='margin: 6px' type='button' id ='btn_editar_usuario' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='Editar' data-id = '".$usuario['idusuario']."'>
+                            <i class='fa fa-edit'></i>
+                            </button>
+                        
+                            <button style='margin: 6px' type='button' id ='btn_eliminar_usuario' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='Eliminar' data-id = '".
+                            $usuario['idusuario']
+                            ."'>
+                            <i class='fa fa-trash'></i>
+                            </button>
+                        </td>
+                    </tr>
+                ";
+                }
+                ?>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            Encabezado
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+</section>
+
+<div class="modal fade" id="modal_acciones_usuario" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modal-content-body">
+        </div>
+    </div>
+</div>
+
+

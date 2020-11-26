@@ -1,0 +1,61 @@
+<?php
+$usuario_editar = isset($usuario) ? $usuario : array();
+?>
+
+<div class="modal-header bg-primary">
+    <h5 class="modal-title text-white" id="exampleModalLabel">Editar Usuario</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form id='formEditar'>
+    <div class="modal-body">
+
+        <div class="row form-group">
+            <div class="col-6">
+                <label for="usuario">Usuario</label>
+                <input type="text" name="usuario" id="usuario" class="form-control"
+                       value='<?= !empty($usuario_editar) ? $usuario_editar['usuario'] : '' ?>'
+                       disabled>
+            </div>
+            <div class="col-6">
+                <label for="contrasenia">Contraseña</label>
+                <input type="password" name="contrasenia" id="contrasenia" class="form-control"
+                       value='<?= !empty($usuario_editar) ? $usuario_editar['contrasenia'] : '' ?>'>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-6">
+                <label for="correo">Contraseña</label>
+                <input type="email" name="correo" id="correo" class="form-control"
+                       value='<?= !empty($usuario_editar) ? $usuario_editar['correo'] : '' ?>'>
+            </div>
+            <div class="col-6">
+                <label for="tipo">Tipo de usuario</label>
+                <select name="tipo" id="tipo" class="form-control">
+                    <option value="Administrador"
+                        <?= !empty($usuario_editar) ? ($usuario_editar['tipo'] === 'Administrador') ? 'selected' : '' : '' ?> >
+                        Administrador
+                    </option>
+                    <option value="Cliente"
+                        <?= !empty($usuario_editar) ? ($usuario_editar['tipo'] === 'Cliente') ? 'selected' : '' : '' ?>
+                    >
+                        Cliente
+                    </option>
+                    <option value="Medidor"
+                        <?= !empty($usuario_editar) ? ($usuario_editar['tipo'] === 'Medidor') ? 'selected' : '' : '' ?>
+                    >
+                        Medidor
+                    </option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id='btn_editar' data-usuario = '<?= !empty($usuario_editar) ? $usuario_editar['idusuario'] : '' ?>'>
+            Editar Usuario
+        </button>
+    </div>
+</form>
