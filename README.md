@@ -1,7 +1,7 @@
 ## En proceso
 <h3>🖥Parte del administrador🖥</h3>
 
- - 👤Registro y gestión de usuarios(Saul)
+ - 👤Registro y gestión de usuarios(Saul)✅
  - 👥Registro y gestión de clientes(Javier)
  - 🏡Registro y gestión de cantones(Jonathan)
  - 📋Tabla con las tarifas de agua potable(Wilian)
@@ -12,7 +12,7 @@
  
  <h3> Extras</h3>
  
- - Validación de login(administrador/cliente)(Saul)
+ - Validación de login(administrador/cliente)(Saul)✅
  - registrar en base las tarifas de agua potable(wilian)
   - Menú para el que toma las medidas (wilian)
 ##
