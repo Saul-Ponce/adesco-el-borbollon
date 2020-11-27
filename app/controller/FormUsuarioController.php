@@ -124,7 +124,7 @@ class formUsuarioController extends Controller
         $resultado = $this->modelo->actualizar($usuario_editar, array(
             'idusuario' => $id,
         ));
-        Excepcion::json($resultado);
+        //Excepcion::json($resultado);
         if ($resultado !== 0) {
             Excepcion::json(['error' => false,
                 'mensaje' => 'Usuario Editado', ]);
