@@ -3,7 +3,7 @@
 
  - 👤Registro y gestión de usuarios(Saul)✅
  - 👥Registro y gestión de clientes(Javier)
- - 🏡Registro y gestión de cantones(Jonathan)
+ - 🏡Registro y gestión de cantones(Jonathan)✅
  - 📋Tabla con las tarifas de agua potable(Wilian)
  
  <h3> 👥Parte de clientes👥</h3>
