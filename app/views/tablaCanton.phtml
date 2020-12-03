@@ -1,0 +1,75 @@
+<section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Lista de cantones </h3>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="col-12" style="margin: 12px">
+
+
+                    <button type="button" id='btn_acciones_canton' class="btn btn-primary">
+                        Agregar Canton
+                    </button>
+
+                </div>
+
+            <div id='div_tabla_canton' class='table-responsive'>
+                <table id="tabla_canton" class="table  table-bordered table-hover">
+                <thead>
+                <tr role="row">
+                    <th  style="width: 50%">Nombre Canton</th>
+
+                    <th style="width: 50%">Aciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $canton = isset($datos) ? $datos : array();
+
+                foreach ($canton as $key => $canton) {
+                    echo "
+                    <tr>
+                        <td>".$canton['nombrecanton']."</td>
+                        
+                        <td style='display: flex; justify-content: center; align-content: space-between'>
+                            <button style='margin: 6px' type='button' id ='btn_editar_canton' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='Editar' data-id = '".$canton['idcanton']."'>
+                            <i class='fa fa-edit'></i>
+                            </button>
+                        
+                            <button style='margin: 6px' type='button' id ='btn_eliminar_canton' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='Eliminar' data-id = '".
+                            $canton['idcanton']
+                            ."'>
+                            <i class='fa fa-trash'></i>
+                            </button>
+                        </td>
+                    </tr>
+                ";
+                }
+                ?>
+                </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            Encabezado
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+</section>
+
+<div class="modal fade" id="modal_acciones_canton" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modal-content-body">
+        </div>
+    </div>
+</div>
+
+
