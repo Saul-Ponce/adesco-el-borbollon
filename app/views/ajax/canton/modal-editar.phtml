@@ -1,0 +1,31 @@
+<?php
+$canton_editar = isset($canton) ? $canton : array();
+?>
+
+<div class="modal-header bg-primary">
+    <h5 class="modal-title text-white" id="exampleModalLabel">Editar Canton</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form id='formEditar'>
+    <div class="modal-body">
+
+        <div class="row form-group">
+            <div class="col-6">
+                <label for="nombrecanton">Nombre Canton</label>
+                <input type="text" name="nombrecanton" id="nombrecanton" class="form-control"
+                       value='<?= !empty($canton_editar) ? $canton_editar['nombrecanton'] : '' ?> ' >
+            </div>
+
+
+         </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id='btn_editar_c' data-canton = '<?= !empty($canton_editar) ? $canton_editar['idcanton'] : '' ?>'>
+            Editar canton
+        </button>
+    </div>
+</form>
