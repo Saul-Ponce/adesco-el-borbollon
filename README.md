@@ -5,6 +5,7 @@
  - 👥Registro y gestión de clientes(Javier)
  - 🏡Registro y gestión de cantones(Jonathan)✅
  - 📋Tabla con las tarifas de agua potable(Wilian)
+  - 🚿Registrar y gestionar consumo de agua(Saul)
  
  <h3> 👥Parte de clientes👥</h3>
  
@@ -42,6 +43,6 @@
 ##
  <h3> Extras</h3>
  
- - Validación de login(administrador/cliente)
+ - Validación de login(administrador/cliente)✅
  - registrar en base las tarifas de agua potable
   - Menú para el que toma las medidas
