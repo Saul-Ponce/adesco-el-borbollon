@@ -1,0 +1,54 @@
+<section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Listado de Tarifas</h3>
+        </div>
+        <div class="card-body">
+            <div id='div_tabla_tarifas' class='table-responsive'>
+                <table id="tabla_tarifas" class="table  table-bordered table-hover">
+                <thead>
+                <tr role="row">
+                    <th  style="width: 22.5%">Desde</th>
+                    <th style="width: 22.5%">Hasta</th>
+                    <th style="width: 22.5%">Precio/m³</th>
+                    <th style="width: 22.5%">Tarifa de alcantarillado</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $tarifas = isset($datos) ? $datos : array();
+
+                foreach ($tarifas as $key => $tarifa) {
+                    echo "
+                    <tr>
+                        <td>".$tarifa['cantdesde_metroscubicos']."</td>
+                        <td>".$tarifa['canthasta_metroscubicos']."</td>
+                        <td>".$tarifa['preciopormetroscubicos']."</td>
+                        <td>".$tarifa['tarifaalcantarillado']."</td>
+                        
+                    </tr>
+                ";
+                }
+                ?>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            Encabezado
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+</section>
+
+<div class="modal fade" id="modal_acciones_usuario" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modal-content-body">
+        </div>
+    </div>
+</div>
+
+
