@@ -25,18 +25,22 @@
 function validarGuardar() {
 
 
-    const input_idcliente ="12345", //document.querySelector('#idcliente'),
+    const
+        input_idcliente =document.querySelector('#usuario'),
         input_nombrecliente = document.querySelector('#nombrecliente'),
         input_apellidocliente = document.querySelector('#apellidocliente'),
         input_dui = document.querySelector('#dui'),
-    input_nit = document.querySelector('#nit'),
-    input_direccion = document.querySelector('#direccion'),
-    input_telefono = document.querySelector('#telefono'),
-    input_idcanton = document.querySelector('#idcanton'),
-    input_matriculaescritura = document.querySelector('#matriculaescritura'),
-    input_idusuario = document.querySelector('#idusuario');
+        input_nit = document.querySelector('#nit'),
+        input_direccion = document.querySelector('#direccion'),
+        input_telefono = document.querySelector('#telefono'),
+        input_idcanton = document.querySelector('#idcanton'),
+        input_matriculaescritura = document.querySelector('#matriculaescritura'),
+        input_usuario= document.querySelector('#usuario'),
+        input_contrasenia = document.querySelector('#contrasenia'),
+        input_ccontrasenia = document.querySelector('#ccontrasenia'),
+        input_correo = document.querySelector('#correo')
     const datos = {
-        idcliente: input_idcliente,
+        codcliente: input_idcliente.value,
         nombrecliente: input_nombrecliente.value,
         apellidocliente: input_apellidocliente.value,
         dui: input_dui.value,
@@ -45,7 +49,11 @@ function validarGuardar() {
         telefono: input_telefono.value,
         idcanton: parseInt(input_idcanton.value),
         matriculaescritura: input_matriculaescritura.value,
-        id_usuario: parseInt(input_idusuario.value),
+        id_usuario: 0,
+        usuario: input_usuario.value,
+        contrasenia: input_contrasenia.value,
+        correo: input_correo.value,
+        tipo: 'Cliente',
     }
 
    /* if (datos.nombrecliente.length < 3 || input_nombrecliente.dataset.ok === 0) {
@@ -176,7 +184,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     })
 */
     btn_registrar.addEventListener('click', (e) => {
-        console.log('clic al boton');
         validarGuardar();
     })
 });

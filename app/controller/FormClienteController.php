@@ -1,15 +1,18 @@
 <?php
 require_once './app/libs/Controller.php';
 require_once './app/models/ClienteModel.php';
+require_once './app/models/UsuarioModel.php';
 
 class FormClienteController extends Controller
 {
     private $modelo;
+    private $modeloU;
 
     public function __construct($conexion)
     {
         parent::__construct();
         $this->modelo = new ClienteModel($conexion);
+        $this->modeloU = new UsuarioModel($conexion);
     }
 
     public function index()
@@ -19,11 +22,13 @@ class FormClienteController extends Controller
         $datos = $this->sesion->get('login');
         $conexion= new Conexion();
         $cantones = $conexion->obtenerConexion()->query('SELECT * from canton')->fetchAll();
-
+        $usuarios = $conexion->obtenerConexion()->query('SELECT * from usuario')->fetchAll();
         $this->view('formCliente', [
             'formCliente' => Utiles::printScript('formCliente')
         ], array(
-            'login' => $datos
+            'login' => $datos,
+            'cantones' => $cantones,
+            'usuarios' => $usuarios
         ));
     }
 
@@ -56,15 +61,32 @@ class FormClienteController extends Controller
         $this->isAjax();
 
         $this->validarMetodoPeticion('POST');
-        $resultado_guardar = $this->modelo->insertar($_POST);
-        $error = $this->modelo->error();
-        if ($resultado_guardar !== null || $error[0]==="00000") {
-            Excepcion::json(['mensaje' => 'cliente creado con exito', 'redireccion' => null /*'/formCliente/tablaClientes'*/]);
-        }
-    //Excepcion::json($resultado_guardar.mysqli_connect_error());
-        else {
+        $usuario = array_slice($_POST, 10);
+        $cliente = array_slice($_POST, 0, 10);
+        $guardar_usuario = $this->modeloU->insertar($usuario);
+        $errorU = $this->modeloU->error();
+        if ($guardar_usuario !== null) {
+            $conexion= new Conexion();
+            $datos_consulta = $conexion->obtenerConexion()->query('SELECT idusuario FROM usuario WHERE usuario = :usuario',array(
+                ':usuario' => $cliente['codcliente']
+            ))->fetchAll();
+
+            $cliente['id_usuario'] = intval($datos_consulta[0]['idusuario']);
+            $resultado_guardar = $this->modelo->insertar($cliente);
+            $errorc = $this->modelo->error();
+            if ($resultado_guardar !== null || $errorc[0] === "00000") {
+                Excepcion::json(['mensaje' => 'cliente creado con exito', 'redireccion' => null /*'/formCliente/tablaClientes'*/]);
+            }
+            else {
+                Excepcion::json(array(
+                    'resultado_guardar' => $errorc,
+                    'error' => true,
+                    'redireccion' => null
+                ));
+            }
+        }else {
             Excepcion::json(array(
-                'resultado_guardar'=> $error[0],
+                'resultado_guardar' => $errorU,
                 'error' => true,
                 'redireccion' => null
             ));
