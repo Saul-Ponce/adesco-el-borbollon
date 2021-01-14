@@ -45,6 +45,14 @@ class ConsumoAguaController extends Controller
 
     }
 
+    public  function modalGuardar(){
+        $this->isAjax();
+        $this->sesionActivaAjax();
+        $this->validarMetodoPeticion('GET');
+
+        Flight::render('ajax/consumo/modal-guardar');
+    }
+
     public function guardar()
     {
 
