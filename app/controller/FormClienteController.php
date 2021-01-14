@@ -17,6 +17,7 @@ class FormClienteController extends Controller
         $this->sesionActiva();
 
         $datos = $this->sesion->get('login');
+        $cantones =;
 
         $this->view('formCliente', [
             'formCliente' => Utiles::printScript('formCliente')

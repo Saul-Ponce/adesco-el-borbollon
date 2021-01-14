@@ -44,32 +44,36 @@
 
 
 
-                  <!--  <div class="form-group">
-                        <label for="tipo">Tipo</label>
-                        <select name="tipo" id="tipo" class="form-control">
-                            <option value="Administrador">Administrador</option>
-                            <option value="Cliente">Cliente</option>
-                            <option value="Medidor">Medidor</option>
+                    <div class="form-group">
+                        <label for="idcanton">Tipo</label>
+                        <select name="idcanton" id="idcanton" class="form-control">
+                            <?php
+                            $canton = isset($cantones) ? $cantones : array();
+
+                            foreach ($canton as $key => $canton) {
+                                echo "
+                            <option value=".$canton['idcanton'].">".$canton['nombrecanton']."</option>
+                                ";
+                            }
+                            ?>
                         </select>
                     </div>
 
 
-                </div>-->
-
-                    <div class="form-group">
-                        <label for="idcanton">Id Canton</label>
-                        <input name="idcanton" type="text" class="form-control" id="idcanton" placeholder="idcanton">
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="idcanton">Id Canton</label>-->
+<!--                        <input name="idcanton" type="text" class="form-control" id="idcanton" placeholder="idcanton">-->
+<!--                    </div>-->
 
                     <div class="form-group">
                         <label for="matriculaescritura">Matricula Esritura</label>
                         <input name="matriculaescritura" type="text" class="form-control" id="matriculaescritura" placeholder="matriculaescritura">
                     </div>
 
-                    <div class="form-group">
-                        <label for="idusuario">Id Usuario</label>
-                        <input name="idusuario" type="number" class="form-control" id="idusuario" placeholder="idusuario">
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="idusuario">Id Usuario</label>-->
+<!--                        <input name="idusuario" type="number" class="form-control" id="idusuario" placeholder="idusuario">-->
+<!--                    </div>-->
 
 
                     <div class="form-group">
@@ -95,7 +99,7 @@
                         <label for="correo">*Correo de recuperacion</label>
                         <input name="correo" type="email" class="form-control" id="correo" placeholder="correo">
                     </div>
-
+                </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <button type="button" id="registrar" class="btn btn-primary toastrDefaultSuccess">Guardar</button>
