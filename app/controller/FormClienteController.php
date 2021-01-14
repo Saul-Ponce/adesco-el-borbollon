@@ -55,16 +55,18 @@ class FormClienteController extends Controller
 
         $this->validarMetodoPeticion('POST');
         $resultado_guardar = $this->modelo->insertar($_POST);
-
-        if ($resultado_guardar !== null) {
-            Excepcion::json(['mensaje' => 'cliente creado con exito', 'redireccion' => '/formCiente/tablaClientes']);
+        $error = $this->modelo->error();
+        if ($resultado_guardar !== null || $error[0]==="00000") {
+            Excepcion::json(['mensaje' => 'cliente creado con exito', 'redireccion' => null /*'/formCliente/tablaClientes'*/]);
         }
-
-        Excepcion::json(array(
-            'error' => true,
-            'redireccion' => null
-        ));
-
+    //Excepcion::json($resultado_guardar.mysqli_connect_error());
+        else {
+            Excepcion::json(array(
+                'resultado_guardar'=> $error[0],
+                'error' => true,
+                'redireccion' => null
+            ));
+        }
     }
 
     public function tablaClientes()

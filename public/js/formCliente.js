@@ -1,4 +1,6 @@
-function validarCliente(cliente) {
+
+/*function validarCliente(cliente) {
+
     const input_cliente = document.querySelector('#cliente')
 
 
@@ -18,10 +20,12 @@ function validarCliente(cliente) {
     })
 
 
-}
+}*/
 
 function validarGuardar() {
-    const input_idcliente =1, //document.querySelector('#idcliente'),
+
+
+    const input_idcliente ="12345", //document.querySelector('#idcliente'),
         input_nombrecliente = document.querySelector('#nombrecliente'),
         input_apellidocliente = document.querySelector('#apellidocliente'),
         input_dui = document.querySelector('#dui'),
@@ -39,9 +43,9 @@ function validarGuardar() {
         nit: input_nit.value,
         direccion: input_direccion.value,
         telefono: input_telefono.value,
-        idcanton: input_idcanton.value,
+        idcanton: parseInt(input_idcanton.value),
         matriculaescritura: input_matriculaescritura.value,
-        idusuario: input_idusuario.value,
+        id_usuario: parseInt(input_idusuario.value),
     }
 
    /* if (datos.nombrecliente.length < 3 || input_nombrecliente.dataset.ok === 0) {
@@ -104,6 +108,7 @@ function validarGuardar() {
 
 function guardar(datos) {
     ///
+    console.log(datos)
     $.post('form-cliente/guardar', datos, function (data) {
         log(data);
         if (!data.error) {
@@ -125,6 +130,7 @@ function guardar(datos) {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
+
     const nombrecliente = document.querySelector('#nombrecliente')
     const apellidocliente = document.querySelector('#apellidocliente')
     const dui = document.querySelector('#dui')
