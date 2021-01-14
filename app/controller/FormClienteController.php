@@ -17,7 +17,8 @@ class FormClienteController extends Controller
         $this->sesionActiva();
 
         $datos = $this->sesion->get('login');
-        $cantones =;
+        $conexion= new Conexion();
+        $cantones = $conexion->obtenerConexion()->query('SELECT * from canton')->fetchAll();
 
         $this->view('formCliente', [
             'formCliente' => Utiles::printScript('formCliente')
