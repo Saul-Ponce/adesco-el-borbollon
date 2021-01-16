@@ -1,5 +1,9 @@
+<?php
+$lectura_anterior = isset($lectura) ? $lectura : array();
+?>
+
 <div class="modal-header bg-primary">
-    <h5 class="modal-title text-white" id="exampleModalLabel">Agregar Canton</h5>
+    <h5 class="modal-title text-white" id="exampleModalLabel">Registrar consumo</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -8,18 +12,37 @@
     <div class="modal-body">
 
         <div class="row form-group">
+            <div class="col-6">
 
-            <label for="nombrecanton">Nombre Canton</label>
-            <input type="text" name="nombrecanton" id="nombrecanton" class="form-control" >
+            <label for="fechadelectura">Fecha de lectura</label>
+            <input type="date" name="fechadelectura" id="fechadelectura" class="form-control" >
 
+            <label for="lecturaactual">Lectura a registrar</label>
+            <input type="number" name="lecturaactual" id="lecturaactual" class="form-control" >
 
+            </div>
+
+            <div class="col-6">
+
+            <label for="lecturaanterior">Lectura anterior</label>
+            <input type="number" value='<?= !empty($lectura_anterior) ? $lectura_anterior['lecturaactual'] : 'no existe lectura anterior' ?>' name="lecturaanterior" id="lecturaanterior" disabled class="form-control" >
+
+            <label for="lecturaanterior">Consumo del mes</label>
+            <input type="number" name="lecturaanterior" id="lecturaanterior" disabled class="form-control" >
+
+            </div>
+
+            <div class="col-6">
+                <label for="lecturaanterior">Monto</label>
+                <input type="number" name="lecturaanterior" id="lecturaanterior" disabled class="form-control" >
+            </div>
         </div>
     </div>
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" id='btn_guardar' >
-            Guardar canton
+            Guardar y emitir factura
         </button>
     </div>
 </form>

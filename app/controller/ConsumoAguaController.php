@@ -18,6 +18,7 @@ class ConsumoAguaController extends Controller
         $conexion= new Conexion();
 
         $mes=date('m');
+        $anio=date('Y');
 
         $datos_consulta = $conexion->obtenerConexion()->query('
         SELECT
@@ -31,11 +32,36 @@ class ConsumoAguaController extends Controller
         cliente
         INNER JOIN consumoagua AS ca ON ca.idcliente = cliente.codcliente
         WHERE
-        MONTH(ca.fechadelectura) != :mes
+        MONTH(ca.fechadelectura) != :mes AND YEAR(ca.fechadelectura) = :anio
         ',array(
-            ':mes' => $mes
+            ':mes' => $mes,
+            ':anio' => $anio
         ))->fetchAll();
 
+        if (empty($datos_consulta)){
+            $datos_consulta = $conexion->obtenerConexion()->query('
+            SELECT 
+            cliente.codcliente,
+            cliente.nombrecliente,
+            cliente.apellidocliente,
+            cliente.dui,
+            cliente.direccion,
+            cliente.telefono
+            FROM
+            cliente
+            WHERE NOT EXISTS(
+            SELECT
+            cliente.codcliente
+            FROM
+            cliente
+            INNER JOIN consumoagua AS ca 
+            WHERE
+            MONTH(ca.fechadelectura) = :mes AND YEAR(ca.fechadelectura) = :anio )'
+            , array(
+                    ':mes' => $mes,
+                    ':anio' => $anio
+                ))->fetchAll();
+        }
 
         $this->view('tablaConsumo', [
             'js_especifico' => Utiles::printScript('Consumo')
@@ -45,12 +71,23 @@ class ConsumoAguaController extends Controller
 
     }
 
-    public  function modalGuardar(){
+    public  function modalGuardar($id){
         $this->isAjax();
         $this->sesionActivaAjax();
         $this->validarMetodoPeticion('GET');
+        $conexion= new Conexion();
 
-        Flight::render('ajax/consumo/modal-guardar');
+        if ($id === null) {
+            exit(1);
+        }
+
+        $datos_consulta = $conexion->obtenerConexion()->query('SELECT lecturaactual FROM consumoagua WHERE idcliente = :id', array(
+            ':id' => $id,
+        ))->fetchAll();
+
+        Flight::render('ajax/consumo/modal-guardar', array(
+            'lectura' => $datos_consulta[0],
+        ));
     }
 
     public function guardar()
