@@ -88,6 +88,10 @@ function validarClienteEliminar(idcliente) {
 }
 
 function editarCliente(clientes,usuarios) {
+////////////
+    const datos={ clientes,usuarios };
+    console.log(`datos : ${datos}`);
+
     $.post('/form-cliente/editar', { clientes,usuarios }, function(data) {
         console.log(data)
         if (!data.error) {
