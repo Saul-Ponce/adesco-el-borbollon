@@ -85,9 +85,17 @@ class ConsumoAguaController extends Controller
             ':id' => $id,
         ))->fetchAll();
 
-        Flight::render('ajax/consumo/modal-guardar', array(
-            'lectura' => $datos_consulta[0],
-        ));
+        if (!empty($datos_consulta)){
+            Flight::render('ajax/consumo/modal-guardar', array(
+                'lectura' => $datos_consulta[0],
+                'idcliente' => $id
+            ));
+        }else{
+            Flight::render('ajax/consumo/modal-guardar', array(
+                'idcliente' => $id
+            ));
+        }
+
     }
 
     public function guardar()

@@ -8,6 +8,16 @@ $(document).ready((event) => {
     /*
      * Eventos
      */
+    $(document).on("keyup", "#lecturaactual", function(e) {
+        validarCampo('codigo', false);
+        focusOnEnter(
+            e.keyCode,
+            $(this).val(),
+            0,
+            'nombre'
+        );
+        buscarCuentaPadre();
+    });
 
     $(document).on('click', '#btn_regconsumo', function() {
         let id = $(this).attr('data-id');

@@ -1,5 +1,6 @@
 <?php
 $lectura_anterior = isset($lectura) ? $lectura : array();
+$idcliente = isset($idcliente) ? $idcliente : array();
 ?>
 
 <div class="modal-header bg-primary">
@@ -8,40 +9,39 @@ $lectura_anterior = isset($lectura) ? $lectura : array();
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<form id='form_guardar'  data-accion = 'guardar'>
+<form id='form_guardar' data-accion='guardar'>
     <div class="modal-body">
 
         <div class="row form-group">
             <div class="col-6">
+                <label for="idcliente">Codigo del cliente</label>
+                <input type="text" name="idcliente" id="idcliente" value='<?= !empty($idcliente) ? $idcliente: '' ?>' disabled class="form-control">
 
-            <label for="fechadelectura">Fecha de lectura</label>
-            <input type="date" name="fechadelectura" id="fechadelectura" class="form-control" >
+                <label for="lecturaactual">Lectura a registrar</label>
+                <input type="number" name="lecturaactual" id="lecturaactual" class="form-control">
 
-            <label for="lecturaactual">Lectura a registrar</label>
-            <input type="number" name="lecturaactual" id="lecturaactual" class="form-control" >
-
+                <label for="consumodelmes">Consumo del mes</label>
+                <input type="number" name="consumodelmes" id="consumodelmes" disabled class="form-control">
             </div>
 
             <div class="col-6">
+                <label for="fechadelectura">Fecha de lectura</label>
+                <input type="date" name="fechadelectura" id="fechadelectura" class="form-control">
 
-            <label for="lecturaanterior">Lectura anterior</label>
-            <input type="number" value='<?= !empty($lectura_anterior) ? $lectura_anterior['lecturaactual'] : 'no existe lectura anterior' ?>' name="lecturaanterior" id="lecturaanterior" disabled class="form-control" >
+                <label for="lecturaanterior">Lectura anterior</label>
+                <input type="number"
+                       value='<?= !empty($lectura_anterior) ? $lectura_anterior['lecturaactual'] : 0.00 ?>'
+                       name="lecturaanterior" id="lecturaanterior" disabled class="form-control">
 
-            <label for="lecturaanterior">Consumo del mes</label>
-            <input type="number" name="lecturaanterior" id="lecturaanterior" disabled class="form-control" >
-
-            </div>
-
-            <div class="col-6">
-                <label for="lecturaanterior">Monto</label>
-                <input type="number" name="lecturaanterior" id="lecturaanterior" disabled class="form-control" >
+                <label for="monto">Monto</label>
+                <input type="number" name="monto" id="monto" disabled class="form-control">
             </div>
         </div>
     </div>
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id='btn_guardar' >
+        <button type="button" class="btn btn-primary" id='btn_guardar'>
             Guardar y emitir factura
         </button>
     </div>
