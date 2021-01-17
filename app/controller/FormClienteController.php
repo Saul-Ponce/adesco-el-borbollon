@@ -234,15 +234,28 @@ INNER JOIN usuario ON cliente.id_usuario = usuario.idusuario')->fetchAll();
         $this->validarMetodoPeticion('POST');
 
         $resultado_eliminar = $this->modelo->eliminar(array(
-            'idcliente' => $_POST['idcliente'],
+            'codcliente' => $_POST['idcliente'],
+
         ));
 
+        $resultado_eliminar2 = $this->modeloU->eliminar(array(
+            'usuario' => $_POST['idcliente'],
 
-        if ($resultado_eliminar !== null) {
+        ));
+
+        $error=$this->modelo->error();
+        $error2=$this->modeloU->error();
+
+
+
+
+        if ($resultado_eliminar !== 0 && $resultado_eliminar2 !== 0) {
             Excepcion::json(['mensaje' => 'cliente eliminado con exito', 'redireccion' => '/formCliente/tablaClientes']);
         }
 
         Excepcion::json(array(
+            'cliente :' => $error,
+            'Usuario :' => $error2,
             'error' => true,
             'redireccion' => null
         ));

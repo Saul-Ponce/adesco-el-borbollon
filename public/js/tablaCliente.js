@@ -17,7 +17,7 @@ function validarClienteEditar() {
 
     //objeto de cuenta
     let cliente = {
-        codcliente: $('#btn_editar').data('codcliente'),
+        codcliente: $('#btn_editar').data('cliente'),
         nombrecliente:$('#nombrecliente').val(),
         apellidocliente: $('#apellidocliente').val(),
         dui: $('#dui').val(),
@@ -37,7 +37,8 @@ function validarClienteEditar() {
             correo: $('#correo').val(),
         tipo: $('#tipo').val(),
     }
-  //  log(cliente);
+    log(cliente);
+    log(usuario);
     // casos de error
     if (cliente.nombrecliente.length === 0) {
         validarCampo('nombrecliente', true);
