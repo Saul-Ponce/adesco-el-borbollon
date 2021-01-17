@@ -208,6 +208,7 @@ INNER JOIN usuario ON cliente.id_usuario = usuario.idusuario')->fetchAll();
             'usuario' => $id,
 
         ));
+        //
         //Excepcion::json($resultado);
         if ($resultado !== 0 && $resultado2 !== 0) {
             Excepcion::json(['error' => false,
