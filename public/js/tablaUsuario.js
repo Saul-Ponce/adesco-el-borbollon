@@ -156,8 +156,8 @@ $(document).ready((event) => {
     })
 
 
-    $(docmuent).on("click", "#btn_editar_u", function(e) {
-        $('#btn_editar_u').blur();
+    $(document).on("click", "#btn_editar", function(e) {
+        $('#btn_editar').blur();
         validarUsuarioEditar();
     });
 
