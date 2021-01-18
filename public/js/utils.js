@@ -50,7 +50,7 @@ const tablaPaginacion = (id) => {
             [5, 10, 50, -1],
             [5, 10, 50, "Todos"]
         ],
-        "pageLength": 5,
+        "pageLength":5,
     });
 }
 

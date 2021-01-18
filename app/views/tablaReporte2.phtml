@@ -3,7 +3,7 @@
 
 
         <center>
-            <b style="font-size: 25px">CONSUMO AGUA PROMEDIO POR CANTON</b>
+            <b style="font-size: 25px">TOTAL DE LO RECAUDADO  POR CANTON</b>
             <hr>
             <b style="font-size: 25px">ADESCO EL BORBOLLON</b>
             <hr>
@@ -18,8 +18,9 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                             <tr role="row">
-                                <th style="width: 15%">PROMEDIO</th>
+
                                 <th  style="width: 15%">CANTON</th>
+                                <th style="width: 15%">TOTAL</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,8 +30,9 @@
                             foreach ($consultas as $key => $consulta) {
                                 echo "
                     <tr>
-                        <td>".$consulta['Promedio']."</td>
+                        
                         <td>".$consulta['nombrecanton']."</td>
+                        <td>".$consulta['Total']."</td>
                     </tr>
                 ";
                             }

@@ -1,15 +1,15 @@
 <?php
 require_once './app/libs/Controller.php';
-require_once './app/models/ReporteConsumoModel.php';
+require_once './app/models/ReportePagoModel.php';
 
-class ReporteController extends Controller
+class Reporte3Controller extends Controller
 {
     private $modelo;
 
     public function __construct($conexion)
     {
         parent::__construct();
-        $this->modelo = new ReporteConsumoModel($conexion);
+        $this->modelo = new ReportePagoModel($conexion);
     }
 
     public  function modalGuardar(){
@@ -26,18 +26,22 @@ class ReporteController extends Controller
         $conexion= new Conexion();
 
         $datos_consulta = $conexion->obtenerConexion()->query('
-        SELECT
-                        avg(ca.consumodelmes) as Promedio,
-                        cant.nombrecanton
-                        FROM
-                        consumoagua AS ca
-                        INNER JOIN cliente AS client ON ca.idcliente = client.codcliente
-                        INNER JOIN canton AS cant ON client.idcanton = cant.idcanton
-                        GROUP BY cant.nombrecanton
+       SELECT
+       r.codrecibo,
+       r.fechaemision,
+       pr.fecha_pago,
+       pr.pago,
+       concat(c.nombrecliente, ",", c.apellidocliente) AS nombcliente,
+        canton.nombrecanton
+       FROM
+       pagorecibo AS pr
+       INNER JOIN recibo AS r ON pr.idrecibo = r.codrecibo
+       INNER JOIN cliente AS c ON r.codcliente = c.codcliente
+       INNER JOIN canton ON c.idcanton = canton.idcanton
         ')->fetchAll();
 
        // $datos= $this->modelo->seleccionar("*");
-        $this->view('tablaReporte', [
+        $this->view('tablaReporte3', [
             'js_especifico' => Utiles::printScript('Reporte1')
         ], array(
             'datos' => $datos_consulta
