@@ -37,7 +37,7 @@ function validarGuardar() {
         return
     }
 
-    if (datos.contrasenia.length < 8) {
+    if (datos.contrasenia.length > 8 || datos.contrasenia.length == 0) {
         focus('contrasenia')
         return
     }

@@ -195,8 +195,6 @@ $(document).ready((event) => {
     $('#btn_acciones_canton').on('click', function() {
         cargarModalGuardar();
         $('#modal_acciones_canton').modal('show');
-
-
     })
 
     $(document).on("click", "#btn_guardar", function(e) {

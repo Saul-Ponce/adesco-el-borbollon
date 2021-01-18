@@ -14,35 +14,23 @@ $idcliente = isset($idcliente) ? $idcliente : array();
 
         <div class="row form-group">
             <div class="col-6">
-                <label for="idcliente">Codigo del cliente</label>
-                <input type="text" name="idcliente" id="idcliente" value='<?= !empty($idcliente) ? $idcliente: '' ?>' disabled class="form-control">
-
                 <label for="lecturaactual">Lectura a registrar</label>
                 <input type="number" name="lecturaactual" id="lecturaactual" class="form-control">
 
-                <label for="consumodelmes">Consumo del mes</label>
-                <input type="number" name="consumodelmes" id="consumodelmes" disabled class="form-control">
             </div>
-
+            <input type="hidden" name="idcliente" id="idcliente" value="<?= !empty($idcliente) ? $idcliente : '' ?>" class="form-control">
+            <input type="hidden" name="lecturaanterior" id="lecturaanterior" value="<?= !empty($lectura_anterior['lecturaactual']) ? $lectura_anterior['lecturaactual'] : '0' ?>" class="form-control">
             <div class="col-6">
                 <label for="fechadelectura">Fecha de lectura</label>
                 <input type="date" name="fechadelectura" id="fechadelectura" class="form-control">
-
-                <label for="lecturaanterior">Lectura anterior</label>
-                <input type="number"
-                       value='<?= !empty($lectura_anterior) ? $lectura_anterior['lecturaactual'] : 0.00 ?>'
-                       name="lecturaanterior" id="lecturaanterior" disabled class="form-control">
-
-                <label for="monto">Monto</label>
-                <input type="number" name="monto" id="monto" disabled class="form-control">
             </div>
         </div>
     </div>
 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id='btn_guardar'>
-            Guardar y emitir factura
+        <button type="button" class="btn btn-primary" id='btn_guardar_consumo' >
+            Guardar
         </button>
     </div>
 </form>
