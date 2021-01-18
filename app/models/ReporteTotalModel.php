@@ -2,7 +2,7 @@
 
 require_once './app/libs/Model.php';
 
-class ReporteConsumoModel extends Model
+class ReporteTotalModel extends Model
 {
     private $tabla;
 
