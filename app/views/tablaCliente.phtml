@@ -1,0 +1,87 @@
+<section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Lista de Clientes</h3>
+
+
+
+        </div>
+        <div class="card-body">
+            <div id='div_tabla_clientes' class='table-responsive'>
+                <table id="tabla_clientes" class="table  table-bordered table-hover">
+                    <thead>
+                    <tr role="row">
+
+                        <th  style="width: 22.5%">Codigo Cliente</th>
+                        <th  style="width: 22.5%">Nombre de Cliente</th>
+                        <th style="width: 12.5%">DUI</th>
+                        <th style="width: 12.5%">NIT</th>
+                        <th style="width: 12.5%">Direccion</th>
+                        <th style="width: 10%">Telefono</th>
+                        <th style="width: 10%">Numero de matricula</th>
+                        <th style="width: 10%">Canton</th>
+                        <th style="width: 10%">usuario</th>
+                        <th style="width: 10%">correo</th>
+                        <th style="width: 10%">Acciones</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $clientes = isset($datos) ? $datos : array();
+
+                    foreach ($clientes as $key => $cliente) {
+                        echo "
+                    <tr>
+                     <td>".$cliente['codcliente']."</td>
+                    <td>".$cliente['nombrecliente']." ".$cliente['apellidocliente']."</td>
+                       
+                        <td>".$cliente['dui']."</td>
+                        <td>".$cliente['nit']."</td>
+                        <td>".$cliente['direccion']."</td>
+                         <td>".$cliente['telefono']."</td>
+                         <td>".$cliente['matriculaescritura']."</td>
+                          <td>".$cliente['nombrecanton']."</td>
+                          <td>".$cliente['usuario']."</td>
+                          <td>".$cliente['correo']."</td>
+                           
+                        <td style='display: flex; justify-content: center; align-content: space-between'>
+                            <button style='margin: 6px' type='button' id ='btn_editar_cliente' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='Editar' data-id = '".$cliente['codcliente']."'>
+                            <i class='fa fa-edit'></i>
+                            </button>
+                        
+                            <button style='margin: 6px' type='button' id ='btn_eliminar_cliente' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='Eliminar' data-id = '".
+                            $cliente['codcliente']
+                            ."'>
+                            <i class='fa fa-trash'></i>
+                            </button>
+                        </td>
+                    </tr>
+                ";
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            Encabezado
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+</section>
+
+<div class="modal fade" id="modal_acciones_cliente" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modal-content-body">
+        </div>
+    </div>
+</div>
+
+

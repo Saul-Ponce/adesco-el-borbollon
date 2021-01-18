@@ -1,0 +1,156 @@
+<?php
+$usuario_editar = isset($usuario) ? $usuario : array();
+$cliente_editar = isset($cliente) ? $cliente : array();
+?>
+
+<div class="modal-header bg-primary">
+    <h5 class="modal-title text-white" id="exampleModalLabel">Editar Cliente</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form id='formEditar'>
+    <div class="modal-body">
+
+
+        <div class="row form-group">
+            <div class="col-6">
+                <label for="codcliente">Codigo Cliente</label>
+                <input type="text" name="codcliente" id="codcliente" class="form-control"
+                       value='<?= !empty($cliente_editar) ? $cliente_editar['codcliente'] : '' ?>'
+                       disabled>
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col-6">
+                    <label for="nombrecliente">Nombre Cliente</label>
+                    <input type="text" name="nombrecliente" id="nombrecliente" class="form-control"
+                           value='<?= !empty($cliente_editar) ? $cliente_editar['nombrecliente'] : '' ?>'>
+
+
+            </div>
+
+
+
+                <div class="col-6">
+                    <label for="apellidocliente">Apellido Cliente</label>
+                    <input type="text" name="apellidocliente" id="apellidocliente" class="form-control"
+                           value='<?= !empty($cliente_editar) ? $cliente_editar['apellidocliente'] : '' ?>'>
+                </div>
+
+            </div>
+
+
+
+            <div class="row form-group">
+                <div class="col-6">
+                    <label for="dui">DUI</label>
+                    <input type="text" name="dui" id="dui" class="form-control"
+                           value='<?= !empty($cliente_editar) ? $cliente_editar['dui'] : '' ?>'>
+
+
+                </div>
+
+
+
+                <div class="col-6">
+                    <label for="nit">NIT</label>
+                    <input type="text" name="nit" id="nit" class="form-control"
+                           value='<?= !empty($cliente_editar) ? $cliente_editar['nit'] : '' ?>'>
+                </div>
+
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col-6">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" name="direccion" id="direccion" class="form-control"
+                           value='<?= !empty($cliente_editar) ? $cliente_editar['direccion'] : '' ?>'>
+
+
+                </div>
+
+
+
+                <div class="col-6">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" name="telefono" id="telefono" class="form-control"
+                           value='<?= !empty($cliente_editar) ? $cliente_editar['telefono'] : '' ?>'>
+                </div>
+
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col-6">
+                    <label for="idcanton">Canton de procedencia</label>
+                    <select name="idcanton" id="idcanton" class="form-control">
+                        <?php
+                        $canton = isset($cantones) ? $cantones : array();
+
+                        foreach ($canton as $key => $canton) {
+                            if ($canton['idcanton']===$cliente_editar['idcanton']){
+                                echo "
+                            <option value=".$canton['idcanton']." selected>".$canton['nombrecanton']."</option>
+                                ";
+
+                            }else{
+
+                                echo "
+                            <option value=".$canton['idcanton'].">".$canton['nombrecanton']."</option>
+                                ";
+                            }
+
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col-6">
+                    <label for="matriculaescritura">Numero de matricula de la esritura</label>
+                    <input name="matriculaescritura" type="text" class="form-control" id="matriculaescritura" placeholder="matriculaescritura"
+                    value='<?= !empty($cliente_editar) ? $cliente_editar['matriculaescritura'] : '' ?>'>
+                </div>
+                </div>
+            </div>
+
+        <input name="id_usuario" type="hidden" class="form-control" id="id_usuario" placeholder="id_usuario"
+               value='<?= !empty($cliente_editar) ? $cliente_editar['id_usuario'] : '' ?>'>
+
+
+        <div class="row form-group">
+            <div class="col-6">
+                <label for="usuario">Usuario</label>
+                <input type="text" name="usuario" id="usuario" class="form-control"
+                       value='<?= !empty($usuario_editar) ? $usuario_editar['usuario'] : '' ?>'
+                       disabled>
+            </div>
+            <div class="col-6">
+                <label for="contrasenia">Contraseña</label>
+                <input type="password" name="contrasenia" id="contrasenia" class="form-control"
+                       value='<?= !empty($usuario_editar) ? $usuario_editar['contrasenia'] : '' ?>'>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-6">
+                <label for="correo">Correo</label>
+                <input type="email" name="correo" id="correo" class="form-control"
+                       value='<?= !empty($usuario_editar) ? $usuario_editar['correo'] : '' ?>'>
+            </div>
+
+            <input name="tipo" type="hidden" class="form-control" id="tipo" placeholder="tipo"
+                   value='<?= !empty($usuario_editar) ? $usuario_editar['tipo'] : '' ?>'>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id='btn_editar' data-cliente = '<?= !empty($cliente_editar) ? $cliente_editar['codcliente'] : '' ?>' >
+
+            Editar Cliente
+        </button>
+    </div>
+</form>
