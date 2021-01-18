@@ -18,7 +18,7 @@ function validarCantonEditar() {
 
 
     let canton = {
-        idcanton: $('#btn_editar_c').data('canton'),
+        idcanton: $('#btn_editar').data('canton'),
         nombrecanton:$('#nombrecanton').val()
 
     }
@@ -211,8 +211,8 @@ $(document).ready((event) => {
     })
 
 
-    $(document).on("click", "#btn_editar_c", function(e) {
-        $('#btn_editar_c').blur();
+    $(document).on("click", "#btn_editar", function(e) {
+        $('#btn_editar').blur();
         validarCantonEditar();
     });
 

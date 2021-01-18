@@ -25,7 +25,7 @@ class FormClienteController extends Controller
         $usuarios = $conexion->obtenerConexion()->query('SELECT * from usuario')->fetchAll();
 
         $this->view('formCliente', [
-            'formCliente' => Utiles::printScript('formCliente')
+            'js_especifico' => Utiles::printScript('formCliente')
         ], array(
             'login' => $datos,
             'cantones' => $cantones,
@@ -124,7 +124,7 @@ INNER JOIN usuario ON cliente.id_usuario = usuario.idusuario')->fetchAll();
         // $datos = $this->modelo->seleccionar('*');
 
         $this->view('tablaCliente', [
-            'formCliente' => Utiles::printScript('formCliente')
+            'js_especifico' => Utiles::printScript('tablaCliente')
         ], array(
             'datos' => $datos,
 

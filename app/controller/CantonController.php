@@ -29,7 +29,7 @@ class CantonController extends Controller
 
         $datos= $this->modelo->seleccionar("*");
         $this->view('tablaCanton', [
-            'js_especifico' => Utiles::printScript('home')
+            'js_especifico' => Utiles::printScript('Canton')
         ], array(
             'datos' => $datos
         ));

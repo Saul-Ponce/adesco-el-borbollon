@@ -137,12 +137,16 @@
 <script src="<?=URL_BASE?>/public/plugins/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <script src="<?=URL_BASE?>/public/plugins/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 <script src="<?=URL_BASE?>/public/plugins/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-<script src="<?=URL_BASE?>/public/js/utils.js"></script>
-<script src="<?=URL_BASE?>/public/js/tablaUsuario.js"></script>
-<script src="<?=URL_BASE?>/public/js/Canton.js"></script>
-<script src="<?=URL_BASE?>/public/js/Reporte1.js"></script>
-<script src="<?=URL_BASE?>/public/js/Consumo.js"></script>
-<script src="<?=URL_BASE?>/public/js/tablaCliente.js"></script>
+
+<!-- Page Specific JS File -->
+<?= isset($js_especifico) ? $js_especifico : '';?>
+
+<!--<script src="--><?//=URL_BASE?><!--/public/js/utils.js"></script>-->
+<!--<script src="--><?//=URL_BASE?><!--/public/js/tablaUsuario.js"></script>-->
+<!--<script src="--><?//=URL_BASE?><!--/public/js/Canton.js"></script>-->
+<!--<script src="--><?//=URL_BASE?><!--/public/js/Reporte1.js"></script>-->
+<!--<script src="--><?//=URL_BASE?><!--/public/js/Consumo.js"></script>-->
+<!--<script src="--><?//=URL_BASE?><!--/public/js/tablaCliente.js"></script>-->
 
 
 

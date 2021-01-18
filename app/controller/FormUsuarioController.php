@@ -19,7 +19,7 @@ class formUsuarioController extends Controller
         $datos = $this->sesion->get('login');
 
         $this->view('formUsuario', [
-            'formUsuario' => Utiles::printScript('formUsuario')
+            'js_especifico' => Utiles::printScript('formUsuario')
         ], array(
             'login' => $datos
         ));
@@ -74,7 +74,7 @@ class formUsuarioController extends Controller
         $datos = $this->modelo->seleccionar('*');
 
         $this->view('tablaUsuario', [
-            'formUsuario' => Utiles::printScript('formUsuario')
+            'js_especifico' => Utiles::printScript('tablaUsuario')
         ], array(
             'datos' => $datos
         ));
