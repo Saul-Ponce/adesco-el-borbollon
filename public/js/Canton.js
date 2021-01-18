@@ -22,7 +22,6 @@ function validarCantonEditar() {
         nombrecanton:$('#nombrecanton').val()
 
     }
-    log(canton);
     // casos de error
     if (canton.nombrecanton.length === 0) {
         validarCampo('nombrecanton', true);
@@ -67,7 +66,7 @@ function validarCantonEliminar(idcanton) {
         if (result.value) {
             eliminarcanton(idcanton);
         } else {
-            console.log('canton no eliminado')
+
         }
     })
 }
@@ -75,7 +74,7 @@ function validarCantonEliminar(idcanton) {
 function editarCanton(canton) {
 
     $.post('/canton/editar', { canton }, function(data) {
-        console.log(data)
+
         if (!data.error) {
             Swal.fire({
                 title: 'Exito',
@@ -103,7 +102,6 @@ function editarCanton(canton) {
 
 function eliminarcanton(idcanton) {
     $.post('/canton/eliminar', { idcanton }, function(data) {
-        console.log(data)
         if (!data.error) {
             Swal.fire({
                 title: 'Exito',
@@ -133,7 +131,6 @@ function validarCantonGuardar() {
     let canton= {
         nombrecanton: $('#nombrecanton').val(),
     }
-    log(canton);
     // casos de error
     if (canton.nombrecanton.length === 0 ) {
         focus('nombrecanton');
@@ -157,7 +154,6 @@ function validarCantonGuardar() {
 
 function guardarCanton(canton) {
     $.post('/canton/guardar', { canton }, function(data) {
-        log(data);
         if (!data.error) {
             Swal.fire({
                 title: 'Exito',
@@ -199,8 +195,6 @@ $(document).ready((event) => {
     $('#btn_acciones_canton').on('click', function() {
         cargarModalGuardar();
         $('#modal_acciones_canton').modal('show');
-
-
     })
 
     $(document).on("click", "#btn_guardar", function(e) {

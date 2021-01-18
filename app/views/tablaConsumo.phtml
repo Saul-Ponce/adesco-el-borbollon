@@ -1,0 +1,132 @@
+<?php
+$clientes = isset($datos) ? $datos : array();
+$consumos = isset($datos2) ? $datos2 : array();
+?>
+<section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Clientes que no tienen un registro de consumo de este mes </h3>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+
+                <div id='div_tabla_cliente' class='table-responsive'>
+                    <table id="tabla_cliente_para_consumo" class="table  table-bordered table-hover">
+                        <thead>
+                        <tr role="row">
+                            <th  style="width: 15%">Codigo</th>
+                            <th  style="width: 25%">Nombres</th>
+                            <th  style="width: 15%">Dui</th>
+                            <th  style="width: 15%">Direccion</th>
+                            <th  style="width: 15%">Telefono</th>
+                            <th  style="width: 15%">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+
+
+                        foreach ($clientes as $key => $cliente) {
+                            foreach ($consumos as $key2 => $consumo) {
+                                if ($cliente['codcliente'] == $consumo['codcliente']) {
+                                    if (date("Y", strtotime($consumo['fechadelectura'])) === date("Y")) {
+                                        $cliente = array();
+                                    }
+                                }
+                            }
+                            if (empty($cliente)) {
+                                echo "
+                    <tr>
+                        <td>" . $cliente['codcliente'] . "</td>
+                        <td>" . $cliente['nombrecliente'] . " " . $cliente['apellidocliente'] . "</td>
+                        <td>" . $cliente['dui'] . "</td>
+                        <td>" . $cliente['direccion'] . "</td>
+                        <td>" . $cliente['telefono'] . "</td>
+                        
+                        <td style='display: flex; justify-content: center; align-content: space-between'>
+                            <button style='margin: 6px' type='button' id ='btn_regconsumo' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='regconsumo' data-id = '" . $cliente['codcliente'] . "'>
+                            Registrar consumo
+                            </button>
+                        </td>
+                    </tr>
+                ";
+                            }
+                            }
+
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</section>
+<section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Clientes que no se les ha hecho factura</h3>
+        </div>
+
+        <div class="card-body">
+            <div class="form-group row">
+
+                <div id='div_tabla_cliente' class='table-responsive'>
+                    <table id="tabla_cliente_consumo_para_factura" class="table  table-bordered table-hover">
+                        <thead>
+                        <tr role="row">
+                            <th  style="width: 15%">Cliente</th>
+                            <th  style="width: 10%">Fecha de lectura</th>
+                            <th  style="width: 10%">lectura Actual</th>
+                            <th  style="width: 10%">Lectura Anterior</th>
+                            <th  style="width: 10%">Consumo del mes</th>
+                            <th  style="width: 10%">Precio aplicado(m3)</th>
+                            <th  style="width: 10%">Tarifa de alcantarillado</th>
+                            <th  style="width: 10%">Monto a pagar</th>
+                            <th  style="width: 15%">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+
+
+                        foreach ($consumos as $key => $consumo) {
+                            echo "
+                    <tr>
+                        <td>".$consumo['nombrecliente']." ".$consumo['apellidocliente']."</td>
+                        <td>".$consumo['fechadelectura']."</td>
+                        <td>".$consumo['lecturaactual']."</td>
+                        <td>".$consumo['lecturaanterior']."</td>
+                        <td>".$consumo['consumodelmes']."</td>
+                        <td>".$consumo['preciopormetroscubicos']."</td>
+                        <td>".$consumo['tarifaalcantarillado']."</td>
+                        <td>".$consumo['monto']."</td>
+                        
+                        <td style='display: flex; justify-content: center; align-content: space-between'>
+                            <button style='margin: 6px' type='button' id ='btn_regconsumo' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='regconsumo' data-id = '".$consumo['codcosumoagua']."'>
+                            Registrar factura
+                            </button>
+                        </td>
+                    </tr>
+                ";
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card -->
+</section>
+<div class="modal fade" id="modal_acciones_consumo" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modal-content-body">
+        </div>
+    </div>
+</div>

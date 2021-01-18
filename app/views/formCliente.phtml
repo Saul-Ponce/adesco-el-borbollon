@@ -1,76 +1,124 @@
+<link rel="stylesheet" href="css/intlTelInput.css">
 <section>
     <div class="card">
         <div class="card-header" style="display: flex; justify-content: center;" >
-            <h3 class="card-title">Regsitrar Cliente</h3>
+            <h3 class="card-title">Registrar Cliente</h3>
         </div>
         <div class="card-body">
             <form role="form" action="#" method="POST" name="form_cliente">
                 <div class="card-body">
 
-
-                    <div class="form-group">
-                        <label for="cliente">Cliente</label>
-                        <input name="cliente" type="text" class="form-control" id="nombrecliente" placeholder="cliente">
+                    <div class="row form-group">
+                    <div class="col-6">
+                        <label for="cliente">Nombre Cliente</label>
+                        <input name="cliente" type="text" class="form-control" id="nombrecliente" placeholder="Nombre">
                     </div>
 
-
-                    <div class="form-group">
+                    <div class="col-6">
                         <label for="apellidocliente">Apellido</label>
-                        <input name="apellidocliente" type="text" class="form-control" id="apellidocliente" placeholder="apellidocliente">
+                        <input name="apellidocliente" type="text" class="form-control" id="apellidocliente" placeholder="Apellido">
+                    </div>
                     </div>
 
-
-                    <div class="form-group">
+                    <div class="row form-group">
+                    <div class="col-6">
                         <label for="dui">DUI</label>
-                        <input name="dui" type="text" class="form-control" id="dui" placeholder="dui">
+                        <input name="dui" type="text" class="form-control" id="dui" placeholder="00000000-0">
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="col-6">
                         <label for="nit">NIT</label>
-                        <input name="nit" type="text" class="form-control" id="nit" placeholder="nit">
+                        <input name="nit" type="text" class="form-control" id="nit" placeholder="0000-000000-000-0">
+                    </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="row form-group">
+                    <div class="col-6">
                         <label for="direccion">Direccion</label>
-                        <input name="direccion" type="text" class="form-control" id="direccion" placeholder="direccion">
+                        <input name="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion">
                     </div>
 
-                    <div class="form-group">
+                    <div class="col-6">
                         <label for="telefono">Telefono</label>
-                        <input name="telefono" type="text" class="form-control" id="telefono" placeholder="telefono">
+                        <input name="telefono" type="text" class="form-control" id="telefono" placeholder="0000-0000">
+                    </div>
                     </div>
 
 
+                    <div class="row form-group">
+                    <div class="col-6">
+                        <label for="idcanton">Canton de procedencia</label>
+                        <select name="idcanton" id="idcanton" class="form-control">
+                            <?php
+                            $canton = isset($cantones) ? $cantones : array();
 
-
-                  <!--  <div class="form-group">
-                        <label for="tipo">Tipo</label>
-                        <select name="tipo" id="tipo" class="form-control">
-                            <option value="Administrador">Administrador</option>
-                            <option value="Cliente">Cliente</option>
-                            <option value="Medidor">Medidor</option>
+                            foreach ($canton as $key => $canton) {
+                                echo "
+                            <option value=".$canton['idcanton'].">".$canton['nombrecanton']."</option>
+                                ";
+                            }
+                            ?>
                         </select>
                     </div>
 
+                    <div class="col-6">
+                        <label for="matriculaescritura">Numero de matricula de la esritura</label>
+                        <input name="matriculaescritura" type="text" class="form-control" id="matriculaescritura" placeholder="matricula escritura">
+                    </div>
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="idusuario">Id Usuario</label>-->
+<!--                        <input name="idusuario" type="number" class="form-control" id="idusuario" placeholder="idusuario">-->
+<!--                    </div>-->
 
-                </div>-->
 
                     <div class="form-group">
-                        <label for="idcanton">Id Canton</label>
-                        <input name="idcanton" type="text" class="form-control" id="idcanton" placeholder="idcanton">
+                        <label>------------------------------------------------------------------------------------</label>
+
                     </div>
 
-                    <div class="form-group">
-                        <label for="matriculaescritura">Matricula Esritura</label>
-                        <input name="matriculaescritura" type="text" class="form-control" id="matriculaescritura" placeholder="matriculaescritura">
+                    <div class="row form-group">
+                    <div class="col-6">
+                        <?php
+                        function GenerarUsuario(){
+                            $usuarios = isset($usuarios) ? $usuarios : array();
+                            $numero_aleatorio = mt_rand(0,9999);
+                            while (strlen ( $numero_aleatorio ) < 4){
+                                $numero_aleatorio = "0".$numero_aleatorio;
+                            }
+
+                            if (in_array($numero_aleatorio, $usuarios)){
+                                return GenerarUsuario();
+                            }else{
+                                return $numero_aleatorio;
+                            }
+                        }
+
+
+
+                        ?>
+                        <label for="usuario">*Usuario</label>
+                        <input name="usuario" type="text" disabled class="form-control" id="usuario" value="<?php echo GenerarUsuario() ?>">
+                    </div>
+                    <div class="col-6">
+                        <label for="correo">*Correo de recuperacion</label>
+                        <input name="correo" type="email" class="form-control" id="correo" placeholder="correo">
+                    </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="idusuario">Id Usuario</label>
-                        <input name="idusuario" type="number" class="form-control" id="idusuario" placeholder="idusuario">
+                    <div class="row form-group">
+                    <div class="col-6">
+                        <label for="contrasenia">*Contraseña</label>
+                        <input name="contrasenia" type="password" class="form-control" id="contrasenia" placeholder="Contraseña">
+                    </div>
+                    <div class="col-6">
+                        <label for="ccontrasenia">*Confirmar Contraseña</label>
+                        <input name="ccontrasenia" type="password" class="form-control" id="ccontrasenia" placeholder="Confirma Contraseña">
+                    </div>
                     </div>
 
+                </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <button type="button" id="registrar" class="btn btn-primary toastrDefaultSuccess">Guardar</button>

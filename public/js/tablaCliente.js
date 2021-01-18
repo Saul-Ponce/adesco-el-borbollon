@@ -1,56 +1,55 @@
-// function cargarTablaUsuarios(carga = false) {
-//     if(carga){
-//         Swal.fire({
-//             title: 'Cargando...',
-//             onBeforeOpen: () => {
-//                 Swal.showLoading()
-//             }
-//         })
-//     }
-//     $('#div_tabla_usuarios').load('/form-usuario/tablaUsuarios', (data) => {
-//         //$('[data-toggle="tooltip"]').tooltip();
-//         if(carga){
-//             Swal.close();
-//         }
-//     });
-// }
-
 function cargarModalEditar(id) {
-    $('#modal-content-body').load(`/form-usuario/modal-editar/${id}`);
+    $('#modal-content-body').load(`/form-cliente/modal-editar/${id}`);
 }
 
-$(document).on('click', '#btn_editar_usuario', function() {
+$(document).on('click', '#btn_editar_cliente', function() {
     let id = $(this).attr('data-id');
     cargarModalEditar(id);
-    $('#modal_acciones_usuario').modal('show');
+    $('#modal_acciones_cliente').modal('show');
 })
 
-$(document).on('click', '#btn_eliminar_usuario', function() {
-    let idusuario = $(this).attr('data-id');
-    validarUsuarioEliminar(idusuario)
+$(document).on('click', '#btn_eliminar_cliente', function() {
+    let idcliente = $(this).attr('data-id');
+    validarClienteEliminar(idcliente)
 })
 
-function validarUsuarioEditar() {
+function validarClienteEditar() {
 
     //objeto de cuenta
-    let usuario = {
-        idusuario: $('#btn_editar').data('usuario'),
-        usuario:$('#usuario').val(),
-        contrasenia: $('#contrasenia').val(),
-        correo: $('#correo').val(),
-        tipo: $('#tipo').val()
+    let cliente = {
+        codcliente: $('#btn_editar').data('cliente'),
+        nombrecliente:$('#nombrecliente').val(),
+        apellidocliente: $('#apellidocliente').val(),
+        dui: $('#dui').val(),
+        nit: $('#nit').val(),
+        direccion: $('#direccion').val(),
+        telefono: $('#telefono').val(),
+        idcanton: $('#idcanton').val(),
+        matriculaescritura: $('#matriculaescritura').val(),
+        id_usuario: $('#id_usuario').val(),
     }
+
+    let usuario={
+        idusuario: cliente.id_usuario,
+
+            usuario: $('#usuario').val(),
+            contrasenia: $('#contrasenia').val(),
+            correo: $('#correo').val(),
+        tipo: $('#tipo').val(),
+    }
+    log(cliente);
+    log(usuario);
     // casos de error
-    if (usuario.contrasenia.length === 0) {
-        validarCampo('contrasenia', true);
-        focus('contrasenia');
+    if (cliente.nombrecliente.length === 0) {
+        validarCampo('nombrecliente', true);
+        focus('nombrecliente');
         return false;
     }
 
     //confirmar guardar
     Swal.fire({
         title: 'Atención',
-        text: "¿Esta seguro de editar este usuario?",
+        text: "¿Esta seguro de editar este cliente?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#6777ef',
@@ -59,20 +58,21 @@ function validarUsuarioEditar() {
         cancelButtonText: 'No',
     }).then((result) => {
         if (result.value) {
-            editarUsuario(usuario);
+            editarCliente(cliente,usuario);
         } else {
-            focus('contrasenia');
+            focus('nombrecliente');
         }
     })
 }
 
-function validarUsuarioEliminar(idusuario) {
+function validarClienteEliminar(idcliente) {
 
+    log(idcliente);
 
     //confirmar eliminar
     Swal.fire({
         title: 'Atención',
-        text: "¿Esta seguro de eliminar este usuario?",
+        text: "¿Esta seguro de eliminar este cliente?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#6777ef',
@@ -81,14 +81,20 @@ function validarUsuarioEliminar(idusuario) {
         cancelButtonText: 'No',
     }).then((result) => {
         if (result.value) {
-            eliminarUsuario(idusuario);
+            eliminarCliente(idcliente);
         } else {
+            console.log('cliente no eliminado')
         }
     })
 }
 
-function editarUsuario(usuarios) {
-    $.post('/form-usuario/editar', { usuarios }, function(data) {
+function editarCliente(clientes,usuarios) {
+////////////
+    const datos={ clientes,usuarios };
+    console.log(`datos : ${datos}`);
+
+    $.post('/form-cliente/editar', { clientes,usuarios }, function(data) {
+        console.log(data)
         if (!data.error) {
             Swal.fire({
                 title: 'Exito',
@@ -97,8 +103,8 @@ function editarUsuario(usuarios) {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok'
             }).then((result) => {
-                $('#modal_acciones_usuario').modal('hide');
-                location.href = '/formUsuario/tablaUsuarios'
+                $('#modal_acciones_cliente').modal('hide');
+                location.href = '/formCliente/tablaClientes'
             })
         } else {
             Swal.fire({
@@ -108,14 +114,15 @@ function editarUsuario(usuarios) {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok'
             }).then((result) => {
-                $('#modal_acciones_usuario').modal('hide');
+                $('#modal_acciones_cliente').modal('hide');
             })
         }
     });
 }
 
-function eliminarUsuario(idusuario) {
-    $.post('/form-usuario/eliminar', { idusuario }, function(data) {
+function eliminarCliente(idcliente) {
+    $.post('/form-cliente/eliminar', { idcliente }, function(data) {
+        console.log(data)
         if (!data.error) {
             Swal.fire({
                 title: 'Exito',
@@ -149,16 +156,16 @@ $(document).ready((event) => {
 
 
 
-    $(document).on('click', '#btn_editar_usuario', function() {
+    $(document).on('click', '#btn_editar_cliente', function() {
         let id = $(this).attr('data-id');
         cargarModalEditar(id);
-        $('#modal_acciones_usuario').modal('show');
+        $('#modal_acciones_cliente').modal('show');
     })
 
 
     $(document).on("click", "#btn_editar", function(e) {
         $('#btn_editar').blur();
-        validarUsuarioEditar();
+        validarClienteEditar();
     });
 
 });

@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             url: "/login/iniciarSesion",
             data: { login },
             success: function(result) {
-                console.log(result);
 
 
                 if (result.error && result.tipo === 'no_encontrado') {
