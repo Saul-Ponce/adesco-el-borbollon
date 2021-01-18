@@ -56,57 +56,68 @@ function validarGuardar() {
         tipo: 'Cliente',
     }
 
-   /* if (datos.nombrecliente.length < 3 || input_nombrecliente.dataset.ok === 0) {
-        focus('cliente')
+if ( input_nombrecliente.dataset.ok == 0 || datos.nombrecliente.length < 3 ) {
+        focus('nombrecliente')
         return
     }
 
-    if (datos.apellidocliente.length > 0 ) {
+    if (datos.apellidocliente.length < 3 || datos.apellidocliente.length == 0 ) {
         focus('apellidocliente')
         return
     }
 
-    /*if (datos.contrasenia != input_ccontrasenia.value) {
-        focus('ccontrasenia')
-        return
-    }*/
 
-  /*  if (datos.dui.length < 10 || datos.dui.length > 10) {
+   if (datos.dui.length == 0 || datos.dui.length > 10 || datos.dui.length < 10) {
         focus('dui')
         return
     }
 
-    if (datos.nit.length < 10 || datos.nit.length > 10) {
+    if (datos.nit.length == 0 || datos.nit.length < 17 || datos.nit.length > 17) {
         focus('nit')
         return
     }
 
-    if (datos.direccion.length < 10 || datos.direccion.length > 10) {
+    if (datos.direccion.length == 0 || datos.direccion.length < 6 || datos.direccion.length > 60) {
         focus('direccion')
         return
     }
 
-    if (datos.telefono.length < 8) {
+    if (datos.telefono.length == 0 || datos.telefono.length < 9 || datos.telefono.length > 9) {
         focus('telefono')
         return
     }
 
-    if (datos.idcanton.nombrecanton.length < 8) {
+ /*  if (datos.idcanton.nombrecanton.length == 0) {
         focus('nombre canton')
         return
-    }
+    }*/
 
    // if (datos.idcanton != input_idcanton.value) {
   //      focus('idcanton')
   //      return
    /// }
 
-    if (datos.matriculaescritura.length < 10) {
+    if (datos.matriculaescritura.length == 0) {
         focus('matriculaescritura')
         return
     }
 
-    if (datos.idusuario !== input_idusuario.value) {
+    /* if (datos.contrasenia.length == 0) {
+         focus('contrasenia')
+        return
+    }*/
+
+    if (datos.contrasenia != input_ccontrasenia.value) {
+      focus('ccontrasenia')
+    return
+    }
+
+
+    /*if (datos.id_usuario.length ==0){
+        focus('idusuario')
+        return
+    }*/
+   /* if (datos.idusuario !== input_idusuario.value) {
         focus('idusuario')
         return
     }*/
