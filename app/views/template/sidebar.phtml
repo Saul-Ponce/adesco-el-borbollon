@@ -11,12 +11,14 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="<?= URL_BASE ?>/public/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
-                     alt="User Image">
-            </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">
+                    <?php
+                $sesion = new Session();
+                $login = $sesion->get('login');
+                echo $login['usuario']
+                ?>
+                </a>
             </div>
         </div>
 
@@ -44,13 +46,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/" class="nav-link">
+                                <a href="/formCliente" class="nav-link">
                                     <i class="nav-icon fas fa-user-edit"></i>
                                     <p>Registrar Clientes</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/formCliente/tablaClientes" class="nav-link">
                                     <i class="nav-icon fas fa-table"></i>
                                     <p>Gestionar Clientes</p>
                                 </a>
@@ -153,9 +155,9 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="Reporte" class="nav-link">
                                     <i class="nav-icon fas fa-circle"></i>
-                                    <p>Reporte1</p>
+                                    <p>Consumo Promedio por canton</p>
                                 </a>
                             </li>
                             <li class="nav-item">
