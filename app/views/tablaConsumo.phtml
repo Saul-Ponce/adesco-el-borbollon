@@ -7,7 +7,7 @@
             <div class="form-group row">
 
                 <div id='div_tabla_cliente' class='table-responsive'>
-                    <table id="tabla_cliente" class="table  table-bordered table-hover">
+                    <table id="tabla_cliente_para_consumo" class="table  table-bordered table-hover">
                         <thead>
                         <tr role="row">
                             <th  style="width: 15%">Codigo</th>
@@ -20,9 +20,9 @@
                         </thead>
                         <tbody>
                         <?php
-                        $cliente = isset($datos) ? $datos : array();
+                        $clientes = isset($datos) ? $datos : array();
 
-                        foreach ($cliente as $key => $cliente) {
+                        foreach ($clientes as $key => $cliente) {
                             echo "
                     <tr>
                         <td>".$cliente['codcliente']."</td>
@@ -48,14 +48,64 @@
             </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-            Encabezado
-        </div>
-        <!-- /.card-footer-->
     </div>
     <!-- /.card -->
 </section>
+<section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Clientes que no se les ha hecho factura</h3>
+        </div>
 
+        <div class="card-body">
+            <div class="form-group row">
+
+                <div id='div_tabla_cliente' class='table-responsive'>
+                    <table id="tabla_cliente_consumo_para_factura" class="table  table-bordered table-hover">
+                        <thead>
+                        <tr role="row">
+                            <th  style="width: 25%">Cliente</th>
+                            <th  style="width: 15%">Fecha de lectura</th>
+                            <th  style="width: 15%">lectura Actual</th>
+                            <th  style="width: 15%">Lectura Anterior</th>
+                            <th  style="width: 15%">Consumo del mes</th>
+                            <th  style="width: 15%">Precio aplicado(m3)</th>
+                            <th  style="width: 15%">Consumo del mes</th>
+                            <th  style="width: 15%">Consumo del mes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $clientes = isset($datos) ? $datos : array();
+
+                        foreach ($clientes as $key => $cliente) {
+                            echo "
+                    <tr>
+                        <td>".$cliente['codcliente']."</td>
+                        <td>".$cliente['nombrecliente']." ".$cliente['apellidocliente']."</td>
+                        <td>".$cliente['dui']."</td>
+                        <td>".$cliente['direccion']."</td>
+                        <td>".$cliente['telefono']."</td>
+                        
+                        <td style='display: flex; justify-content: center; align-content: space-between'>
+                            <button style='margin: 6px' type='button' id ='btn_regconsumo' class='btn btn-warning' 
+                            data-toggle='tooltip' data-placement='top'
+                            title='' data-original-title='regconsumo' data-id = '".$cliente['codcliente']."'>
+                            Registrar factura
+                            </button>
+                        </td>
+                    </tr>
+                ";
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card -->
+</section>
 <div class="modal fade" id="modal_acciones_consumo" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modal-content-body">

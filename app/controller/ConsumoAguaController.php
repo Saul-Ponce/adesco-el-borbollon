@@ -63,10 +63,29 @@ class ConsumoAguaController extends Controller
                 ))->fetchAll();
         }
 
+        $datos_consulta2 = $conexion->obtenerConexion()->query('
+        SELECT
+        cliente.nombrecliente,
+        cliente.apellidocliente,
+        consumoagua.fechadelectura,
+        consumoagua.lecturaactual,
+        consumoagua.lecturaanterior,
+        consumoagua.consumodelmes,
+        tarifa.preciopormetroscubicos,
+        tarifa.tarifaalcantarillado,
+        consumoagua.monto
+        FROM
+        consumoagua
+        INNER JOIN tarifa ON consumoagua.idtarifa = tarifa.idcobroagua
+        INNER JOIN cliente ON consumoagua.idcliente = cliente.codcliente
+        WHERE NOT EXISTS(SELECT * FROM detallerecibo)
+        ')->fetchAll();
+
         $this->view('tablaConsumo', [
             'js_especifico' => Utiles::printScript('Consumo')
         ], array(
-            'datos' => $datos_consulta
+            'datos' => $datos_consulta,
+            'datos2' => $datos_consulta2
         ));
 
     }
