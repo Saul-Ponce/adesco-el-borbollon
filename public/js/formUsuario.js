@@ -9,7 +9,6 @@ function validarUsuario(usuario) {
             input_usuario.dataset.ok = 0
         } else {
             input_usuario.dataset.ok = 1
-            console.log('validado')
         }
 
         if (usuario.length === 0) {
@@ -38,7 +37,7 @@ function validarGuardar() {
         return
     }
 
-    if (datos.contrasenia.length < 8) {
+    if (datos.contrasenia.length > 8 || datos.contrasenia.length == 0) {
         focus('contrasenia')
         return
     }
@@ -55,7 +54,6 @@ function validarGuardar() {
 function guardar(datos) {
     ///
     $.post('form-usuario/guardar', datos, function (data) {
-        log(data);
         if (!data.error) {
             Swal.fire({
                 title: 'Atención',
@@ -68,8 +66,6 @@ function guardar(datos) {
                 location.href = data.redireccion
             })
         }else {
-            console.log('no sirvio')
-            console.log(data.error)
         }
     })
 }

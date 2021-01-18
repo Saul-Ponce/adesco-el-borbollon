@@ -40,7 +40,6 @@ function validarUsuarioEditar() {
         correo: $('#correo').val(),
         tipo: $('#tipo').val()
     }
-    log(usuario);
     // casos de error
     if (usuario.contrasenia.length === 0) {
         validarCampo('contrasenia', true);
@@ -69,7 +68,6 @@ function validarUsuarioEditar() {
 
 function validarUsuarioEliminar(idusuario) {
 
-    log(idusuario);
 
     //confirmar eliminar
     Swal.fire({
@@ -85,14 +83,12 @@ function validarUsuarioEliminar(idusuario) {
         if (result.value) {
             eliminarUsuario(idusuario);
         } else {
-            console.log('usuario no eliminado')
         }
     })
 }
 
 function editarUsuario(usuarios) {
     $.post('/form-usuario/editar', { usuarios }, function(data) {
-        console.log(data)
         if (!data.error) {
             Swal.fire({
                 title: 'Exito',
@@ -120,7 +116,6 @@ function editarUsuario(usuarios) {
 
 function eliminarUsuario(idusuario) {
     $.post('/form-usuario/eliminar', { idusuario }, function(data) {
-        console.log(data)
         if (!data.error) {
             Swal.fire({
                 title: 'Exito',

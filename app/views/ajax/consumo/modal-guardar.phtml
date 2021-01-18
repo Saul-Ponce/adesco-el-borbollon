@@ -1,0 +1,36 @@
+<?php
+$lectura_anterior = isset($lectura) ? $lectura : array();
+$idcliente = isset($idcliente) ? $idcliente : array();
+?>
+
+<div class="modal-header bg-primary">
+    <h5 class="modal-title text-white" id="exampleModalLabel">Registrar consumo</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form id='form_guardar' data-accion='guardar'>
+    <div class="modal-body">
+
+        <div class="row form-group">
+            <div class="col-6">
+                <label for="lecturaactual">Lectura a registrar</label>
+                <input type="number" name="lecturaactual" id="lecturaactual" class="form-control">
+
+            </div>
+            <input type="hidden" name="idcliente" id="idcliente" value="<?= !empty($idcliente) ? $idcliente : '' ?>" class="form-control">
+            <input type="hidden" name="lecturaanterior" id="lecturaanterior" value="<?= !empty($lectura_anterior['lecturaactual']) ? $lectura_anterior['lecturaactual'] : '0' ?>" class="form-control">
+            <div class="col-6">
+                <label for="fechadelectura">Fecha de lectura</label>
+                <input type="date" name="fechadelectura" id="fechadelectura" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id='btn_guardar_consumo' >
+            Guardar
+        </button>
+    </div>
+</form>
