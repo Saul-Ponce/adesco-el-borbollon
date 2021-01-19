@@ -13,26 +13,26 @@ $cliente_editar = isset($cliente) ? $cliente : array();
     <div class="modal-body">
 
 
-        <div class="row form-group">
+      <!--  <div class="row form-group">
             <div class="col-6">
                 <label for="codcliente">Codigo Cliente</label>
                 <input type="text" name="codcliente" id="codcliente" class="form-control"
-                       value='<?= !empty($cliente_editar) ? $cliente_editar['codcliente'] : '' ?>'
+                    value='<?= !empty($cliente_editar) ? $cliente_editar['codcliente'] : '' ?>'
                        disabled>
             </div>
 
-            <div class="col-6">
-                <label for="nombrecliente">Nombre Cliente</label>
-                <input type="text" name="nombrecliente" id="nombrecliente" class="form-control"
-                       value='<?= !empty($cliente_editar) ? $cliente_editar['nombrecliente'] : '' ?>'>
 
-            </div>
-        </div>
+        </div>-->
 
 
             <div class="row form-group">
 
-            </div>
+                <div class="col-6">
+                    <label for="nombrecliente">Nombre Cliente</label>
+                    <input type="text" name="nombrecliente" id="nombrecliente" class="form-control"
+                           value='<?= !empty($cliente_editar) ? $cliente_editar['nombrecliente'] : '' ?>'>
+
+                </div>
 
 
 
@@ -47,6 +47,7 @@ $cliente_editar = isset($cliente) ? $cliente : array();
 
 
             <div class="row form-group">
+
                 <div class="col-6">
                     <label for="dui">DUI</label>
                     <input type="text" name="dui" id="dui" class="form-control"
@@ -117,7 +118,8 @@ $cliente_editar = isset($cliente) ? $cliente : array();
                     value='<?= !empty($cliente_editar) ? $cliente_editar['matriculaescritura'] : '' ?>'>
                 </div>
                 </div>
-            </div>
+
+
 
         <input name="id_usuario" type="hidden" class="form-control" id="id_usuario" placeholder="id_usuario"
                value='<?= !empty($cliente_editar) ? $cliente_editar['id_usuario'] : '' ?>'>
@@ -130,14 +132,7 @@ $cliente_editar = isset($cliente) ? $cliente : array();
                        value='<?= !empty($usuario_editar) ? $usuario_editar['usuario'] : '' ?>'
                        disabled>
             </div>
-            <div class="col-6">
-                <label for="contrasenia">Contraseña</label>
-                <input type="password" name="contrasenia" id="contrasenia" class="form-control"
-                       value='<?= !empty($usuario_editar) ? $usuario_editar['contrasenia'] : '' ?>'>
-            </div>
-        </div>
 
-        <div class="row form-group">
             <div class="col-6">
                 <label for="correo">Correo</label>
                 <input type="email" name="correo" id="correo" class="form-control"
@@ -146,6 +141,23 @@ $cliente_editar = isset($cliente) ? $cliente : array();
 
             <input name="tipo" type="hidden" class="form-control" id="tipo" placeholder="tipo"
                    value='<?= !empty($usuario_editar) ? $usuario_editar['tipo'] : '' ?>'>
+
+
+        </div>
+
+
+
+
+        <div class="row form-group">
+
+
+
+
+            <div class="col-6">
+                <label for="contrasenia">Contraseña</label>
+                <input type="password" name="contrasenia" id="contrasenia" class="form-control"
+                       value='<?= !empty($usuario_editar) ? $usuario_editar['contrasenia'] : '' ?>'>
+            </div>
         </div>
 
     </div>
