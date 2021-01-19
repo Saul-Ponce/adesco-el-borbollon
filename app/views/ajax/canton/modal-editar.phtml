@@ -11,14 +11,12 @@ $canton_editar = isset($canton) ? $canton : array();
 <form id='formEditar'>
     <div class="modal-body">
 
-        <div class="row form-group">
-            <div class="col-6">
+        <div class="row form-group align-content-center">
+            <div class="col-10">
                 <label for="nombrecanton">Nombre Canton</label>
                 <input type="text" name="nombrecanton" id="nombrecanton" class="form-control"
                        value='<?= !empty($canton_editar) ? $canton_editar['nombrecanton'] : '' ?> ' >
             </div>
-
-
          </div>
     </div>
 

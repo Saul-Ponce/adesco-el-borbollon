@@ -8,13 +8,12 @@ $consumos = isset($datos) ? $datos : array();
         </div>
 
         <div class="card-body">
-            <div class="form-group row">
-
+            <div class="form-group row" style="display: flex; justify-content: center">
+                <h4 style="justify-content: center">Cliente: <?= $consumos[0]['nombrecliente'] ?> <?= $consumos[0]['apellidocliente'] ?></h4>
                 <div id='div_tabla_cliente' class='table-responsive'>
-                    <table id="tabla_consumo" class="table  table-bordered table-hover">
+                    <table id="tabla_consumo_cliente" class="table  table-bordered table-hover">
                         <thead>
                         <tr role="row">
-                            <th  style="width: 15%">Cliente</th>
                             <th  style="width: 10%">Fecha de lectura</th>
                             <th  style="width: 10%">lectura Actual</th>
                             <th  style="width: 10%">Lectura Anterior</th>
@@ -31,7 +30,6 @@ $consumos = isset($datos) ? $datos : array();
                         foreach ($consumos as $key => $consumo) {
                             echo "
                     <tr>
-                        <td>".$consumo['nombrecliente']." ".$consumo['apellidocliente']."</td>
                         <td>".$consumo['fechadelectura']."</td>
                         <td>".$consumo['lecturaactual']."</td>
                         <td>".$consumo['lecturaanterior']."</td>

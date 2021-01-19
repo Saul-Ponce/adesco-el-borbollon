@@ -86,14 +86,14 @@ class ConsumoAguaController extends Controller
             ':id' => $id,
         ))->fetchAll();
 
-        if (!empty($datos_consulta)){
+        if (!empty($datos_consulta['lecturaactual'])){
             Flight::render('ajax/consumo/modal-guardar', array(
                 'lectura' => $datos_consulta[0],
                 'idcliente' => $id
             ));
         }else{
             Flight::render('ajax/consumo/modal-guardar', array(
-                'lectura' => 0,
+                'lectura' => '0',
                 'idcliente' => $id
             ));
         }

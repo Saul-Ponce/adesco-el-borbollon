@@ -10,29 +10,42 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contactanos</a>
         </li>
+        <?php
+        $sesion = new Session();
+        $login = $sesion->get('login');
+        $rol = $login['tipo'];
+
+
+
+        if($rol === 'Administrador'):
+        ?>
         <li class="nav-item dropdown">
             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
                 Reportes
             </a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                 <li class="nav-item">
-                    <a href="Reporte" class="dropdown-item">
+                    <a href="/Reporte" class="dropdown-item">
                         Consumo Promedio por canton
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="Reporte2" class="dropdown-item">
+                    <a href="/Reporte2" class="dropdown-item">
                         Total  recaudado por canton
                     </a>
                 </li>
                 <!-- los cantones se van a registrar en la misma vista -->
                 <li class="nav-item">
-                    <a href="Reporte3" class="dropdown-item">
+                    <a href="/Reporte3" class="dropdown-item">
                         Recibo de Pago
                     </a>
                 </li>
             </ul>
         </li>
+        <?php
+        endif
+
+        ?>
     </ul>
 
 

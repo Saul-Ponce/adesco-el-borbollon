@@ -42,7 +42,7 @@ class Reporte3Controller extends Controller
 
        // $datos= $this->modelo->seleccionar("*");
         $this->view('tablaReporte3', [
-            'js_especifico' => Utiles::printScript('Reporte1')
+            'js_especifico' => Utiles::printScript('Reporte3')
         ], array(
             'datos' => $datos_consulta
         ));

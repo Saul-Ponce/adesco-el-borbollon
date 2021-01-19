@@ -29,7 +29,7 @@ class TarifaController extends Controller
 
         $datos= $this->modelo->seleccionar("*");
         $this->view('tablaTarifa', [
-            'js_especifico' => Utiles::printScript('home')
+            'js_especifico' => Utiles::printScript('Tarifas')
         ], array(
             'datos' => $datos
         ));

@@ -1,34 +1,45 @@
 <section>
     <div class="card">
-        <div class="card-header" style="display: flex; justify-content: center;" >
+        <div class="card-header" style="display: flex; justify-content: center;">
             <h3 class="card-title">Registrar Usuario</h3>
         </div>
         <div class="card-body">
             <form role="form" action="#" method="POST" name="form_usuario">
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="usuario">Usuario</label>
-                        <input name="usuario" type="text" class="form-control" id="usuario" placeholder="usuario">
+                    <div class="row form-group">
+                        <div class="col-6">
+                            <label for="usuario">Usuario</label>
+                            <input name="usuario" type="text" class="form-control" id="usuario" placeholder="usuario">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="correo">Correo electronico</label>
+                            <input name="correo" type="email" class="form-control" id="correo" placeholder="correo">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="contrasenia">Contraseña</label>
-                        <input name="contrasenia" type="password" class="form-control" id="contrasenia" placeholder="Contraseña">
+                    <div class="row form-group">
+                        <div class="col-6">
+                            <label for="contrasenia">Contraseña</label>
+                            <input name="contrasenia" type="password" class="form-control" id="contrasenia"
+                                   placeholder="Contraseña">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="ccontrasenia">Confirmar Contraseña</label>
+                            <input name="ccontrasenia" type="password" class="form-control" id="ccontrasenia"
+                                   placeholder="ConfirmaContraseña">
+                        </div>
+
                     </div>
-                    <div class="form-group">
-                        <label for="ccontrasenia">Confirmar Contraseña</label>
-                        <input name="ccontrasenia" type="password" class="form-control" id="ccontrasenia" placeholder="ConfirmaContraseña">
-                    </div>
-                    <div class="form-group">
-                        <label for="correo">Correo de recuperacion</label>
-                        <input name="correo" type="email" class="form-control" id="correo" placeholder="correo">
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo">Tipo</label>
-                        <select name="tipo" id="tipo" class="form-control">
-                            <option value="Administrador">Administrador</option>
-                            <option value="Cliente">Cliente</option>
-                            <option value="Medidor">Medidor</option>
-                        </select>
+                    <div class="row form-group">
+                        <div class="col-6">
+                            <label for="tipo">Tipo</label>
+                            <select name="tipo" id="tipo" class="form-control">
+                                <option value="Administrador">Administrador</option>
+                                <option value="Cliente">Cliente</option>
+                                <option value="Medidor">Medidor</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -43,5 +54,5 @@
     <!-- /.card -->
 </section>
 
-<script src="<?=URL_BASE?>/public/js/utils.js"></script>
-<script src="<?=URL_BASE?>/public/js/formUsuario.js"></script>
+<script src="<?= URL_BASE ?>/public/js/utils.js"></script>
+<script src="<?= URL_BASE ?>/public/js/formUsuario.js"></script>

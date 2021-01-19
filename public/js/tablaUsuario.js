@@ -145,7 +145,7 @@ $(document).ready((event) => {
     /*
      * Eventos
      */
-
+    tablaPaginacion('tabla_usuarios')
 
 
 

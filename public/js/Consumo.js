@@ -72,16 +72,17 @@ $(document).ready((event) => {
 
 
 
-    $('#btn_regconsumo').on('click', function() {
-        let id = $(this).attr('data-id');
-        cargarModalGuardar(id)
-        $('#modal_acciones_consumo').modal('show');
-    })
-    // $(document).on('click', '#btn_regconsumo', function() {
+    // $('#btn_registrar_consumo').on('click', function() {
     //     let id = $(this).attr('data-id');
-    //     cargarModalGuardar(id);
+    //     console.log(id)
+    //     cargarModalGuardar(id)
     //     $('#modal_acciones_consumo').modal('show');
     // })
+    $(document).on('click', '#btn_registrar_consumo', function() {
+        let id = $(this).attr('data-id');
+        cargarModalGuardar(id);
+        $('#modal_acciones_consumo').modal('show');
+    })
 
     $(document).on("click", "#btn_guardar_consumo", function(e) {
         $('#btn_guardar_consumo').blur();

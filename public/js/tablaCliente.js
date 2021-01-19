@@ -31,7 +31,6 @@ function validarClienteEditar() {
 
     let usuario={
         idusuario: cliente.id_usuario,
-
             usuario: $('#usuario').val(),
             contrasenia: $('#contrasenia').val(),
             correo: $('#correo').val(),
@@ -91,7 +90,7 @@ function validarClienteEliminar(idcliente) {
 function editarCliente(clientes,usuarios) {
 ////////////
     const datos={ clientes,usuarios };
-    console.log(`datos : ${datos}`);
+    console.log(datos);
 
     $.post('/form-cliente/editar', { clientes,usuarios }, function(data) {
         console.log(data)
@@ -107,6 +106,7 @@ function editarCliente(clientes,usuarios) {
                 location.href = '/formCliente/tablaClientes'
             })
         } else {
+            console.log(data.SqlError)
             Swal.fire({
                 title: 'Error',
                 text: data.mensaje,
@@ -154,7 +154,7 @@ $(document).ready((event) => {
      */
 
 
-
+    tablaPaginacion('tabla_clientes')
 
     $(document).on('click', '#btn_editar_cliente', function() {
         let id = $(this).attr('data-id');

@@ -142,7 +142,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="Tarifa" class="nav-link">
+                                <a href="/Tarifa" class="nav-link">
                                     <i class="nav-icon fas fa-list"></i>
                                     <p>Tarifa de agua</p>
                                 </a>
@@ -204,7 +204,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/xd" class="nav-link">
+                                    <a href="/historial-consumo" class="nav-link">
                                         <i class="nav-icon fas fa-history"></i>
                                         <p>Historial de consumo</p>
                                     </a>
@@ -221,19 +221,54 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/" class="nav-link">
                                         <i class="nav-icon fas fa-history"></i>
                                         <p>Historial de Recibos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/Tarifa" class="nav-link">
                                         <i class="nav-icon fas fa-list"></i>
                                         <p>Tarifa de agua</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+                <?php
+
+                endif
+
+                ?>
+                <?php
+                $sesion = new Session();
+                $login = $sesion->get('login');
+                $rol = $login['tipo'];
+
+                if ($rol === 'Medidor'):
+                ?>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-water"></i>
+                        <p>
+                            Consumo del agua
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/consumo-agua" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>Registrar consumo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/consumo-agua/tablaConsumo" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>Ver Consumo del agua</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <?php
 
                 endif

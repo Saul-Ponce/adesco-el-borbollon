@@ -9,7 +9,7 @@ $clientes = isset($datos) ? $datos : array();
         <div class="card-body">
             <div class="form-group row">
 
-                <div id='div_tabla_cliente' class='table-responsive'>
+                <div id='div_tabla_cliente_consumo' class='table-responsive'>
                     <table id="tabla_cliente_consumo" class="table  table-bordered table-hover">
                         <thead>
                         <tr role="row">
@@ -36,9 +36,9 @@ $clientes = isset($datos) ? $datos : array();
                         <td>" . $cliente['telefono'] . "</td>
                         
                         <td style='display: flex; justify-content: center; align-content: space-between'>
-                            <button style='margin: 6px' type='button' id ='btn_regconsumo' class='btn btn-warning' 
+                            <button style='margin: 6px' type='button' id ='btn_registrar_consumo' class='btn btn-warning' 
                             data-toggle='tooltip' data-placement='top'
-                            title='' data-original-title='regconsumo' data-id = '" . $cliente['codcliente'] . "'>
+                            title='' data-original-title='Registrar' data-id = '".$cliente['codcliente']."'>
                             Registrar consumo
                             </button>
                         </td>
@@ -63,3 +63,5 @@ $clientes = isset($datos) ? $datos : array();
         </div>
     </div>
 </div>
+
+<script src="<?=URL_BASE?>/public/js/utils.js"></script>

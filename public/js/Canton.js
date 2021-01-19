@@ -190,7 +190,7 @@ $(document).ready((event) => {
     /*
      * Eventos
      */
-
+    tablaPaginacion('tabla_cantones')
 
     $('#btn_acciones_canton').on('click', function() {
         cargarModalGuardar();

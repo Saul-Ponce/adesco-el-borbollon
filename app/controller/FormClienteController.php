@@ -206,7 +206,6 @@ INNER JOIN usuario ON cliente.id_usuario = usuario.idusuario')->fetchAll();
 
         $resultado2 = $this->modeloU->actualizar($usuario_editar, array(
             'usuario' => $id,
-
         ));
         //
         //Excepcion::json($resultado);
@@ -216,7 +215,9 @@ INNER JOIN usuario ON cliente.id_usuario = usuario.idusuario')->fetchAll();
 
         } else {
             if ($this->modelo->error()[2] !== null) {
-                Excepcion::json(['error' => true,
+                Excepcion::json([
+                    'SqlError'=>$this->modelo->error(),
+                    'error' => true,
                     'mensaje' => 'Error al editar en el Cliente',
                 ]);
             } else {
