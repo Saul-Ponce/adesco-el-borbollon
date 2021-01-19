@@ -21,13 +21,16 @@ $cliente_editar = isset($cliente) ? $cliente : array();
                        disabled>
             </div>
 
+            <div class="col-6">
+                <label for="nombrecliente">Nombre Cliente</label>
+                <input type="text" name="nombrecliente" id="nombrecliente" class="form-control"
+                       value='<?= !empty($cliente_editar) ? $cliente_editar['nombrecliente'] : '' ?>'>
+
+            </div>
+        </div>
+
 
             <div class="row form-group">
-                <div class="col-6">
-                    <label for="nombrecliente">Nombre Cliente</label>
-                    <input type="text" name="nombrecliente" id="nombrecliente" class="form-control"
-                           value='<?= !empty($cliente_editar) ? $cliente_editar['nombrecliente'] : '' ?>'>
-
 
             </div>
 
