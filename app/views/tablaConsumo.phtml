@@ -11,7 +11,7 @@ $consumos = isset($datos2) ? $datos2 : array();
             <div class="form-group row">
 
                 <div id='div_tabla_cliente' class='table-responsive'>
-                    <table id="tabla_cliente_para_consumo" class="table  table-bordered table-hover">
+                    <table id="tabla_cliente_consumo" class="table  table-bordered table-hover">
                         <thead>
                         <tr role="row">
                             <th  style="width: 15%">Codigo</th>
@@ -27,14 +27,7 @@ $consumos = isset($datos2) ? $datos2 : array();
 
 
                         foreach ($clientes as $key => $cliente) {
-                            foreach ($consumos as $key2 => $consumo) {
-                                if ($cliente['codcliente'] == $consumo['codcliente']) {
-                                    if (date("Y", strtotime($consumo['fechadelectura'])) === date("Y")) {
-                                        $cliente = array();
-                                    }
-                                }
-                            }
-                            if (empty($cliente)) {
+
                                 echo "
                     <tr>
                         <td>" . $cliente['codcliente'] . "</td>
@@ -52,7 +45,7 @@ $consumos = isset($datos2) ? $datos2 : array();
                         </td>
                     </tr>
                 ";
-                            }
+
                             }
 
                         ?>

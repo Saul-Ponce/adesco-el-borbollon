@@ -65,8 +65,8 @@ $(document).ready((event) => {
     /*
      * Eventos
      */
-
-    tablaPaginacion('tabla_cliente_para_consumo')
+    log('ando por aca')
+    tablaPaginacion('tabla_cliente_consumo')
     tablaPaginacion('tabla_cliente_consumo_para_factura')
 
 
