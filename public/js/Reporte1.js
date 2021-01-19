@@ -4,7 +4,7 @@ $(document).ready((event)=>{
     $('#example').DataTable({
         "order": [],
         "aaSorting": [],
-        language: {
+        "language": {
             "lengthMenu": "Mostrar _MENU_ registros",
             "zeroRecords": "No se encontraron resultados",
             "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
@@ -19,6 +19,11 @@ $(document).ready((event)=>{
             },
             "sProcessing":"Procesando...",
         },
+            "lengthMenu": [
+                [5, 10, 50, -1],
+                [5, 10, 50, "Todos"]
+            ],
+            "pageLength":5,
         //para usar los botones
         responsive: "true",
         dom: 'Bfrtilp',
