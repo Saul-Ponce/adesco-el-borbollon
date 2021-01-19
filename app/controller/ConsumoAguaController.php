@@ -45,19 +45,9 @@ class ConsumoAguaController extends Controller
         $datos_consulta2 = $conexion->obtenerConexion()->query('
         SELECT
         cliente.codcliente,
-        cliente.nombrecliente,
-        cliente.apellidocliente,
-        consumoagua.fechadelectura,
-        consumoagua.lecturaactual,
-        consumoagua.lecturaanterior,
-        consumoagua.consumodelmes,
-        tarifa.preciopormetroscubicos,
-        tarifa.tarifaalcantarillado,
-        consumoagua.monto,
-        consumoagua.codcosumoagua
+        consumoagua.fechadelectura
         FROM
         consumoagua
-        INNER JOIN tarifa ON consumoagua.idtarifa = tarifa.idcobroagua
         INNER JOIN cliente ON consumoagua.idcliente = cliente.codcliente
         WHERE NOT EXISTS(SELECT * FROM detallerecibo)
         ')->fetchAll();
@@ -77,8 +67,7 @@ class ConsumoAguaController extends Controller
         $this->view('tablaConsumo', [
             'js_especifico' => Utiles::printScript('Consumo')
         ], array(
-            'datos' => $datos_consulta,
-            'datos2' => $datos_consulta2
+            'datos' => $datos_consulta
         ));
 
     }
@@ -170,6 +159,37 @@ class ConsumoAguaController extends Controller
             }
 
         }
+    }
+
+    public function tablaConsumo()
+    {
+        $this->sesionActiva();
+
+        $conexion= new Conexion();
+        $datos_consulta = $conexion->obtenerConexion()->query('
+        SELECT
+        cliente.codcliente,
+        cliente.nombrecliente,
+        cliente.apellidocliente,
+        consumoagua.fechadelectura,
+        consumoagua.lecturaactual,
+        consumoagua.lecturaanterior,
+        consumoagua.consumodelmes,
+        tarifa.preciopormetroscubicos,
+        tarifa.tarifaalcantarillado,
+        consumoagua.monto
+        FROM
+        consumoagua
+        INNER JOIN tarifa ON consumoagua.idtarifa = tarifa.idcobroagua
+        INNER JOIN cliente ON consumoagua.idcliente = cliente.codcliente
+        ')->fetchAll();
+
+        $this->view('tblConsumo', [
+            'js_especifico' => Utiles::printScript('tablaConsumo')
+        ], array(
+            'datos' => $datos_consulta
+        ));
+
     }
 
     public function editar()

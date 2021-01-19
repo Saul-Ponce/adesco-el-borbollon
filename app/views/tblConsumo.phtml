@@ -1,0 +1,53 @@
+<?php
+$consumos = isset($datos) ? $datos : array();
+?>
+<section>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Historial de consumo</h3>
+        </div>
+
+        <div class="card-body">
+            <div class="form-group row">
+
+                <div id='div_tabla_cliente' class='table-responsive'>
+                    <table id="tabla_consumo" class="table  table-bordered table-hover">
+                        <thead>
+                        <tr role="row">
+                            <th  style="width: 15%">Cliente</th>
+                            <th  style="width: 10%">Fecha de lectura</th>
+                            <th  style="width: 10%">lectura Actual</th>
+                            <th  style="width: 10%">Lectura Anterior</th>
+                            <th  style="width: 10%">Consumo del mes</th>
+                            <th  style="width: 10%">Precio aplicado(m3)</th>
+                            <th  style="width: 10%">Tarifa de alcantarillado</th>
+                            <th  style="width: 10%">Monto a pagar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+
+
+                        foreach ($consumos as $key => $consumo) {
+                            echo "
+                    <tr>
+                        <td>".$consumo['nombrecliente']." ".$consumo['apellidocliente']."</td>
+                        <td>".$consumo['fechadelectura']."</td>
+                        <td>".$consumo['lecturaactual']."</td>
+                        <td>".$consumo['lecturaanterior']."</td>
+                        <td>".$consumo['consumodelmes']."</td>
+                        <td>".$consumo['preciopormetroscubicos']."</td>
+                        <td>".$consumo['tarifaalcantarillado']."</td>
+                        <td>".$consumo['monto']."</td>
+                    </tr>
+                ";
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card -->
+</section>

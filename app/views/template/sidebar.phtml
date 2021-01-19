@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" >
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="<?= URL_BASE ?>/public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
@@ -11,7 +11,11 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="<?= URL_BASE ?>/public/dist/img/user.png" class="img-circle elevation-2" alt="User Image">
+            </div>
             <div class="info">
+
                 <a href="#" class="d-block">
                     <?php
                 $sesion = new Session();
@@ -109,7 +113,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/consumo-agua/tablaConsumo" class="nav-link">
                                     <i class="nav-icon fas fa-table"></i>
                                     <p>Ver Consumo del agua</p>
                                 </a>
