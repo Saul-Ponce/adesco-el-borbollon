@@ -49,19 +49,14 @@ class ConsumoAguaController extends Controller
         FROM
         consumoagua
         INNER JOIN cliente ON consumoagua.idcliente = cliente.codcliente
-        WHERE NOT EXISTS(SELECT * FROM detallerecibo)
-        ')->fetchAll();
+        WHERE YEAR(consumoagua.fechadelectura) = :anio
+        ',array(
+            ':anio' => $anio
+        ))->fetchAll();
 
         foreach ($datos_consulta2 as $key => $dato){
-
-                if (date("Y", strtotime($dato['fechadelectura'])) == date("Y")) {
                     $datoindice = array_search($dato['codcliente'], $datos_consulta);
                     unset($datos_consulta[$datoindice]);
-                    //array_splice($datos_consulta, $key);
-                }
-
-                //$datos_consulta = array_diff($datos_consulta, array(implode("", $dato['codcliente'])));
-
         }
 
         $this->view('tablaConsumo', [
